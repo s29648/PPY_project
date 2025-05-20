@@ -15,8 +15,8 @@ class MainMenu(QWidget):
         self.wrap_enabled = False
         self.custom_size = False
         self.speed = 5
-        self.grid_width = 50
-        self.grid_height = 50
+        self.grid_width = 30
+        self.grid_height = 20
         self.setWindowTitle("Game of Life - Main Menu")
         self.setMinimumSize(600, 400)
         self.build_ui()
@@ -53,6 +53,8 @@ class MainMenu(QWidget):
         self.hide()
         width = self.grid_width if self.custom_size else 50
         height = self.grid_height if self.custom_size else 50
+        with open("gui/styles/main.qss", "r") as f:
+            self.setStyleSheet(f.read())
         self.game_window = GameOfLifeGUI(
             width=width,
             height=height,
@@ -61,8 +63,6 @@ class MainMenu(QWidget):
             speed=self.speed,
             fixed_view=self.custom_size
         )
-        with open("gui/styles/main.qss", "r") as f:
-            self.setStyleSheet(f.read())
         self.game_window.show()
 
     def show_settings(self):
@@ -136,8 +136,11 @@ class MainMenu(QWidget):
 if __name__ == "__main__":
     import sys
     app = QApplication(sys.argv)
-    window = MainMenu()
+
     with open("gui/styles/menu.qss", "r") as f:
         app.setStyleSheet(f.read())
+
+    window = MainMenu()
     window.show()
+
     sys.exit(app.exec_())

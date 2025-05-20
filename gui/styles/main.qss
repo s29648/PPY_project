@@ -17,21 +17,6 @@ QPushButton {
     border-radius: 4px;
 }
 
-QSlider::groove:horizontal {
-    height: 6px;
-    background: #2c2c2c;
-    margin: 0 6px;
-    border-radius: 20px;
-}
-
-QSlider::handle:horizontal {
-    border: none;
-    border-radius: 8px;
-    width: 12px;
-    margin: -6px 0;
-    border-radius: 20px;
-}
-
 QMessageBox QLabel{
     font-family: "Segoe UI";
     font-size: 14px;

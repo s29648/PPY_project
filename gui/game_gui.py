@@ -147,8 +147,25 @@ class GameOfLifeGUI(QWidget):
 
         if self.fixed_view:
             cell_px = min(width // self.width, height // self.height)
-            start_x, start_y = 0, 0
             cols, rows = self.width, self.height
+
+            x_offset = (width - cols * cell_px) // 2
+            y_offset = (height - rows * cell_px) // 2
+
+            for gx in range(cols):
+                for gy in range(rows):
+                    sx = x_offset + gx * cell_px
+                    sy = y_offset + gy * cell_px
+
+                    qp.setPen(self.grid_line_color)
+                    qp.setBrush(self.dead_color)
+                    qp.drawRect(sx, sy, cell_px, cell_px)
+
+                    if self.game.grid[gy][gx]:
+                        qp.setBrush(self.live_color)
+                        qp.setPen(Qt.NoPen)
+                        qp.drawRect(sx + 1, sy + 1, cell_px - 2, cell_px - 2)
+
         else:
             cell_px = max(5, int(self.base_cell_size * self.zoom))
             start_x = self.offset.x() // cell_px
@@ -156,43 +173,53 @@ class GameOfLifeGUI(QWidget):
             cols = width // cell_px + 2
             rows = height // cell_px + 2
 
-        for i in range(cols):
-            for j in range(rows):
-                gx = start_x + i
-                gy = start_y + j
-                sx = i * cell_px - (self.offset.x() % cell_px)
-                sy = j * cell_px - (self.offset.y() % cell_px)
+            for i in range(cols):
+                for j in range(rows):
+                    gx = start_x + i
+                    gy = start_y + j
+                    sx = i * cell_px - (self.offset.x() % cell_px)
+                    sy = j * cell_px - (self.offset.y() % cell_px)
 
-                qp.setPen(self.grid_line_color)
-                qp.setBrush(self.dead_color)
-                qp.drawRect(sx, sy, cell_px, cell_px)
+                    qp.setPen(self.grid_line_color)
+                    qp.setBrush(self.dead_color)
+                    qp.drawRect(sx, sy, cell_px, cell_px)
 
-                if 0 <= gx < self.game.width and 0 <= gy < self.game.height:
-                    if self.game.grid[gy][gx]:
-                        qp.setBrush(self.live_color)
-                        qp.setPen(Qt.NoPen)
-                        qp.drawRect(sx + 1, sy + 1, cell_px - 2, cell_px - 2)
+                    if 0 <= gx < self.game.width and 0 <= gy < self.game.height:
+                        if self.game.grid[gy][gx]:
+                            qp.setBrush(self.live_color)
+                            qp.setPen(Qt.NoPen)
+                            qp.drawRect(sx + 1, sy + 1, cell_px - 2, cell_px - 2)
 
     def _get_cell_coords(self, pos):
         """Convert screen coordinates to cell grid coordinates."""
-        width, height = self.canvas.width(), self.canvas.height()
         if self.fixed_view:
-            cell_px = min(width // self.width, height // self.height)
-            x = pos.x() // cell_px
-            y = pos.y() // cell_px
+            canvas_width = self.canvas.width()
+            canvas_height = self.canvas.height()
+            cell_px = min(canvas_width // self.width, canvas_height // self.height)
+            x_offset = (canvas_width - self.width * cell_px) // 2
+            y_offset = (canvas_height - self.height * cell_px) // 2
+
+            x = (pos.x() - x_offset) // cell_px
+            y = (pos.y() - y_offset) // cell_px
+
+            if not (0 <= x < self.width and 0 <= y < self.height):
+                return None
         else:
             cell_px = max(5, int(self.base_cell_size * self.zoom))
             x = (pos.x() + self.offset.x()) // cell_px
             y = (pos.y() + self.offset.y()) // cell_px
+
         return int(x), int(y)
 
     def _mouse_press(self, event: QMouseEvent):
         """Handle cell toggling and drag start."""
         if event.button() == Qt.LeftButton:
-            x, y = self._get_cell_coords(event.pos())
-            if 0 <= x < self.game.width and 0 <= y < self.game.height:
-                self.game.toggle_cell(x, y)
-                self.canvas.update()
+            result = self._get_cell_coords(event.pos())
+            if result is not None:
+                x, y = result
+                if 0 <= x < self.game.width and 0 <= y < self.game.height:
+                    self.game.toggle_cell(x, y)
+                    self.canvas.update()
         elif event.button() == Qt.RightButton:
             self.last_mouse_pos = event.pos()
 
@@ -287,29 +314,32 @@ class GameOfLifeGUI(QWidget):
 
     def _apply_dark_theme(self):
         """Apply dark theme colors and QSS."""
-        self.bg_color = QColor("#1e1e1e")
+        with open("gui/styles/dark_theme.qss", "r") as f:
+            self.setStyleSheet(f.read())
+        self.bg_color = QColor("#2d3133")
         self.grid_line_color = QColor("#3c3c3c")
         self.dead_color = QColor("#2c2c2c")
         self.live_color = QColor("#458557")
-        with open("gui/styles/dark_theme.qss", "r") as f:
-            self.setStyleSheet(f.read())
+
 
     def _apply_light_theme(self):
         """Apply light theme colors and QSS."""
-        self.bg_color = QColor("#bec7d1")
+        with open("gui/styles/light_theme.qss", "r") as f:
+            self.setStyleSheet(f.read())
+        self.bg_color = QColor("#d8e4f0")
         self.grid_line_color = QColor("#a7adb5")
         self.dead_color = QColor("#bec7d1")
         self.live_color = QColor("#224061")
-        with open("gui/styles/light_theme.qss", "r") as f:
-            self.setStyleSheet(f.read())
+
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = GameOfLifeGUI()
-    window.show()
 
     with open("gui/styles/main.qss", "r") as f:
         app.setStyleSheet(f.read())
+
+    window = GameOfLifeGUI()
+    window.show()
 
     sys.exit(app.exec_())

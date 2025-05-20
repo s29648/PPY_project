@@ -25,11 +25,13 @@ QPushButton:hover {
 
 /*slider*/
 QSlider::groove:horizontal {
-    background: #171717;
-    margin: -6px 0;
+    background: #222222;
+    border-radius: 5px;
 }
 
 QSlider::handle:horizontal {
     background: #253d52;
+    width: 10px;
+    border-radius: 5px;
 }
 
