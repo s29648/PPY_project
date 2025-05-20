@@ -59,7 +59,7 @@ class GameOfLifeGUI(QWidget):
         layout = QVBoxLayout(self)
 
         header = QHBoxLayout()
-        self.icon_label = QSvgWidget("../assets/game-of-life.svg")
+        self.icon_label = QSvgWidget("assets/game-of-life.svg")
         self.icon_label.setObjectName("IconLabel")
         self.icon_label.setFixedSize(100, 100)
         header.addWidget(self.icon_label)
@@ -76,7 +76,7 @@ class GameOfLifeGUI(QWidget):
 
         exit_btn = QPushButton()
         exit_btn.setObjectName("ExitButton")
-        exit_btn.setIcon(QIcon("../assets/exit.svg"))
+        exit_btn.setIcon(QIcon("assets/exit.svg"))
         exit_btn.clicked.connect(self._confirm_exit_to_menu)
         header.addWidget(exit_btn)
 
@@ -291,7 +291,7 @@ class GameOfLifeGUI(QWidget):
         self.grid_line_color = QColor("#3c3c3c")
         self.dead_color = QColor("#2c2c2c")
         self.live_color = QColor("#458557")
-        with open("../gui/styles/dark_theme.qss", "r") as f:
+        with open("gui/styles/dark_theme.qss", "r") as f:
             self.setStyleSheet(f.read())
 
     def _apply_light_theme(self):
@@ -300,7 +300,7 @@ class GameOfLifeGUI(QWidget):
         self.grid_line_color = QColor("#a7adb5")
         self.dead_color = QColor("#bec7d1")
         self.live_color = QColor("#224061")
-        with open("../gui/styles/light_theme.qss", "r") as f:
+        with open("gui/styles/light_theme.qss", "r") as f:
             self.setStyleSheet(f.read())
 
 
@@ -309,7 +309,7 @@ if __name__ == "__main__":
     window = GameOfLifeGUI()
     window.show()
 
-    with open("../gui/styles/main.qss", "r") as f:
+    with open("gui/styles/main.qss", "r") as f:
         app.setStyleSheet(f.read())
 
     sys.exit(app.exec_())

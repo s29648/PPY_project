@@ -49,7 +49,7 @@ class MainMenu(QWidget):
 
     def start_game(self):
         """Start the game with the selected settings."""
-        from game_gui import GameOfLifeGUI
+        from gui.game_gui import GameOfLifeGUI
         self.hide()
         width = self.grid_width if self.custom_size else 50
         height = self.grid_height if self.custom_size else 50
@@ -61,8 +61,8 @@ class MainMenu(QWidget):
             speed=self.speed,
             fixed_view=self.custom_size
         )
-        with open("../gui/styles/main.qss", "r") as f:
-            app.setStyleSheet(f.read())
+        with open("gui/styles/main.qss", "r") as f:
+            self.setStyleSheet(f.read())
         self.game_window.show()
 
     def show_settings(self):
@@ -137,7 +137,7 @@ if __name__ == "__main__":
     import sys
     app = QApplication(sys.argv)
     window = MainMenu()
-    with open("../gui/styles/menu.qss", "r") as f:
+    with open("gui/styles/menu.qss", "r") as f:
         app.setStyleSheet(f.read())
     window.show()
     sys.exit(app.exec_())

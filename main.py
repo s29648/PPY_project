@@ -1,6 +1,13 @@
-from tkinter import Tk
-from gui.game_gui import GameGUI
+import sys
+from PyQt5.QtWidgets import QApplication
+from gui.start_menu import MainMenu
 
-root = Tk()
-app = GameGUI(root)
-root.mainloop()
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainMenu()
+    window.show()
+
+    with open("gui/styles/menu.qss", "r") as f:
+        app.setStyleSheet(f.read())
+
+    sys.exit(app.exec_())
