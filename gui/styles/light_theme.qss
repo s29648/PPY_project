@@ -1,0 +1,30 @@
+QWidget {
+    background-color: #d8e4f0;
+    color: #0f233d;
+}
+
+QLabel#TitleLabel {
+    color: #1c364d;
+}
+
+QPushButton#ExitButton {
+    background-color: #bec7d1;
+}
+
+QPushButton {
+    background-color: #597a99;
+    color: #e1e2e3;
+}
+
+QPushButton:hover {
+    background-color: #3f5975;
+}
+
+QSlider::groove:horizontal {
+    background: #c2cad1;
+    margin: -6px 0;
+}
+
+QSlider::handle:horizontal {
+    background: #7ea1c2;
+}
