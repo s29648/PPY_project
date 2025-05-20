@@ -1,0 +1,26 @@
+* {
+    font-family: "Courier New";
+    font-size: 20px;
+}
+
+QWidget{
+    background-color: #c7d6cf;
+    color: #325444;
+}
+
+QPushButton {
+    border: 1px solid transparent;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background-color: #658a78;
+    color: #e8e8e8;
+}
+
+QPushButton:hover {
+    background-color: #547565;
+}
+
+QMessageBox QLabel{
+    font-size: 14px;
+    font-weight: normal;
+}

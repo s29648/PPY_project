@@ -1,6 +1,3 @@
-# TODO: game logic
-
-
 class GameOfLife:
     def __init__(self, width, height, wrap=False):
         self.width = width
@@ -53,3 +50,6 @@ class GameOfLife:
     def clear(self):
         self.grid = [[False for _ in range(self.width)] for _ in range(self.height)]
         self.generation = 0
+
+    def get_generation(self):
+         return self.generation
