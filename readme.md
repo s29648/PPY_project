@@ -35,17 +35,21 @@ A graphical and interactive simulation of **Conway’s Game of Life**, developed
 
 ## Installation
 
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/s29648/PPY_project.git
    cd PPY_project
 2. Install Required packages
-3. How to Run
    ```bash
+   pip install -r requirements.txt
+4. How to Run
+   ```bash
+   python3 main.py
+   # or
    python main.py
 
 ---
-
 ## Copyrights
 © Darya and Shehab, 2025 
    
