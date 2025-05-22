@@ -10,6 +10,9 @@ build/
 dist/
 *.egg-info/
 
+!docs/build/
+!docs/build/**
+
 .idea/
 .vscode/
 *.swp
