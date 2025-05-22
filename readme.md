@@ -5,6 +5,7 @@ A graphical and interactive simulation of **Conway’s Game of Life**, developed
 
 ## Table of Contents
 - [Features](#features)
+- [Documentation](#documentation)
 - [Start Screen Options](#start-screen-options) 
 - [Installation](#installation)
 - [Copyrights](#copyrights)
@@ -23,6 +24,10 @@ A graphical and interactive simulation of **Conway’s Game of Life**, developed
   - Copyright
  
   ---
+
+## Documentation
+You can view the full documentation
+[Conway's Game Of Life Documentation PDF](docs/build/latex/Conway.pdf).
 
 ## Start Screen Options
 
