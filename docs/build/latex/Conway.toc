@@ -1,0 +1,7 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Modules}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Main Module}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Core Module}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}GUI Module}{4}{subsection.1.3}%
+\contentsline {section}{Python Module Index}{6}{section*.28}%
+\contentsline {section}{Index}{7}{section*.29}%

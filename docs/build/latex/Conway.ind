@@ -1,0 +1,74 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter {\sphinxsymbolsname}
+  \item \spxentry{\_apply\_dark\_theme()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, 
+		\hyperpage{4}
+  \item \spxentry{\_apply\_light\_theme()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, 
+		\hyperpage{4}
+  \item \spxentry{\_build\_ui()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, \hyperpage{4}
+  \item \spxentry{\_change\_speed()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, \hyperpage{4}
+  \item \spxentry{\_clear\_grid()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, \hyperpage{4}
+  \item \spxentry{\_confirm\_exit\_to\_menu()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, 
+		\hyperpage{4}
+  \item \spxentry{\_get\_cell\_coords()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, 
+		\hyperpage{4}
+  \item \spxentry{\_mouse\_drag()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, \hyperpage{4}
+  \item \spxentry{\_mouse\_press()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, \hyperpage{4}
+  \item \spxentry{\_mouse\_release()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, \hyperpage{4}
+  \item \spxentry{\_mouse\_wheel()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, \hyperpage{5}
+  \item \spxentry{\_next\_generation()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, \hyperpage{5}
+  \item \spxentry{\_paint\_grid()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, \hyperpage{5}
+  \item \spxentry{\_toggle\_theme()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, \hyperpage{5}
+  \item \spxentry{\_toggle\_timer()}\spxextra{gui.game\_gui.GameOfLifeGUI method}, \hyperpage{5}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{clear()}\spxextra{core.game\_of\_life.GameOfLife method}, \hyperpage{3}
+  \item \spxentry{core.game\_of\_life}
+    \subitem \spxentry{module}, \hyperpage{3}
+  \item \spxentry{count\_alive\_neighbors()}\spxextra{core.game\_of\_life.GameOfLife method}, 
+		\hyperpage{3}
+
+  \indexspace
+  \bigletter G
+  \item \spxentry{GameOfLife}\spxextra{class in core.game\_of\_life}, \hyperpage{3}
+  \item \spxentry{GameOfLifeGUI}\spxextra{class in gui.game\_gui}, \hyperpage{4}
+  \item \spxentry{get\_generation()}\spxextra{core.game\_of\_life.GameOfLife method}, \hyperpage{3}
+  \item \spxentry{gui.game\_gui}
+    \subitem \spxentry{module}, \hyperpage{4}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{main}
+    \subitem \spxentry{module}, \hyperpage{3}
+  \item \spxentry{module}
+    \subitem \spxentry{core.game\_of\_life}, \hyperpage{3}
+    \subitem \spxentry{gui.game\_gui}, \hyperpage{4}
+    \subitem \spxentry{main}, \hyperpage{3}
+
+  \indexspace
+  \bigletter N
+  \item \spxentry{next\_generation()}\spxextra{core.game\_of\_life.GameOfLife method}, 
+		\hyperpage{3}
+  \item \spxentry{next\_generation\_custom()}\spxextra{core.game\_of\_life.GameOfLife method}, 
+		\hyperpage{3}
+
+  \indexspace
+  \bigletter R
+  \item \spxentry{reset\_custom\_rules()}\spxextra{core.game\_of\_life.GameOfLife method}, 
+		\hyperpage{3}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{set\_custom\_rules()}\spxextra{core.game\_of\_life.GameOfLife method}, 
+		\hyperpage{3}
+
+  \indexspace
+  \bigletter T
+  \item \spxentry{toggle\_cell()}\spxextra{core.game\_of\_life.GameOfLife method}, \hyperpage{4}
+
+\end{sphinxtheindex}

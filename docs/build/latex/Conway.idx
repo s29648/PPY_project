@@ -1,0 +1,31 @@
+\indexentry{module@\spxentry{module}!main@\spxentry{main}|hyperpage}{3}
+\indexentry{main@\spxentry{main}!module@\spxentry{module}|hyperpage}{3}
+\indexentry{module@\spxentry{module}!core.game\_of\_life@\spxentry{core.game\_of\_life}|hyperpage}{3}
+\indexentry{core.game\_of\_life@\spxentry{core.game\_of\_life}!module@\spxentry{module}|hyperpage}{3}
+\indexentry{GameOfLife (class in core.game\_of\_life)@\spxentry{GameOfLife}\spxextra{class in core.game\_of\_life}|hyperpage}{3}
+\indexentry{clear() (core.game\_of\_life.GameOfLife method)@\spxentry{clear()}\spxextra{core.game\_of\_life.GameOfLife method}|hyperpage}{3}
+\indexentry{count\_alive\_neighbors() (core.game\_of\_life.GameOfLife method)@\spxentry{count\_alive\_neighbors()}\spxextra{core.game\_of\_life.GameOfLife method}|hyperpage}{3}
+\indexentry{get\_generation() (core.game\_of\_life.GameOfLife method)@\spxentry{get\_generation()}\spxextra{core.game\_of\_life.GameOfLife method}|hyperpage}{3}
+\indexentry{next\_generation() (core.game\_of\_life.GameOfLife method)@\spxentry{next\_generation()}\spxextra{core.game\_of\_life.GameOfLife method}|hyperpage}{3}
+\indexentry{next\_generation\_custom() (core.game\_of\_life.GameOfLife method)@\spxentry{next\_generation\_custom()}\spxextra{core.game\_of\_life.GameOfLife method}|hyperpage}{3}
+\indexentry{reset\_custom\_rules() (core.game\_of\_life.GameOfLife method)@\spxentry{reset\_custom\_rules()}\spxextra{core.game\_of\_life.GameOfLife method}|hyperpage}{3}
+\indexentry{set\_custom\_rules() (core.game\_of\_life.GameOfLife method)@\spxentry{set\_custom\_rules()}\spxextra{core.game\_of\_life.GameOfLife method}|hyperpage}{3}
+\indexentry{toggle\_cell() (core.game\_of\_life.GameOfLife method)@\spxentry{toggle\_cell()}\spxextra{core.game\_of\_life.GameOfLife method}|hyperpage}{4}
+\indexentry{module@\spxentry{module}!gui.game\_gui@\spxentry{gui.game\_gui}|hyperpage}{4}
+\indexentry{gui.game\_gui@\spxentry{gui.game\_gui}!module@\spxentry{module}|hyperpage}{4}
+\indexentry{GameOfLifeGUI (class in gui.game\_gui)@\spxentry{GameOfLifeGUI}\spxextra{class in gui.game\_gui}|hyperpage}{4}
+\indexentry{\_apply\_dark\_theme() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_apply\_dark\_theme()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{4}
+\indexentry{\_apply\_light\_theme() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_apply\_light\_theme()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{4}
+\indexentry{\_build\_ui() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_build\_ui()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{4}
+\indexentry{\_change\_speed() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_change\_speed()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{4}
+\indexentry{\_clear\_grid() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_clear\_grid()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{4}
+\indexentry{\_confirm\_exit\_to\_menu() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_confirm\_exit\_to\_menu()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{4}
+\indexentry{\_get\_cell\_coords() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_get\_cell\_coords()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{4}
+\indexentry{\_mouse\_drag() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_mouse\_drag()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{4}
+\indexentry{\_mouse\_press() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_mouse\_press()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{4}
+\indexentry{\_mouse\_release() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_mouse\_release()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{4}
+\indexentry{\_mouse\_wheel() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_mouse\_wheel()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{5}
+\indexentry{\_next\_generation() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_next\_generation()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{5}
+\indexentry{\_paint\_grid() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_paint\_grid()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{5}
+\indexentry{\_toggle\_theme() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_toggle\_theme()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{5}
+\indexentry{\_toggle\_timer() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_toggle\_timer()}\spxextra{gui.game\_gui.GameOfLifeGUI method}|hyperpage}{5}
