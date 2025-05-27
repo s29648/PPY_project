@@ -3,7 +3,28 @@ from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtGui import QPainter, QMouseEvent, QWheelEvent, QColor
 
 class GridCanvas(QWidget):
+    """
+    Interactive canvas for displaying and manipulating the Game of Life grid.
+    
+    Supports:
+    - Cell toggling with left mouse button
+    - Grid panning with right mouse button
+    - Zoom with mouse wheel
+    - Fixed and infinite grid modes
+    - Custom color schemes
+    """
     def __init__(self, game, fixed_view_callable, zoom, offset, colors, parent=None):
+        """
+        Initialize the grid canvas.
+
+        Args:
+            game: GameOfLife instance to visualize
+            fixed_view_callable: Function that returns whether the view is fixed
+            zoom: Initial zoom level
+            offset: Initial view offset
+            colors: Dictionary with color scheme (bg, grid, dead, live)
+            parent: Parent widget
+        """
         super().__init__(parent)
         self.game = game
         self.fixed_view_callable = fixed_view_callable
@@ -67,7 +88,12 @@ class GridCanvas(QWidget):
                             qp.drawRect(sx + 1, sy + 1, cell_px - 2, cell_px - 2)
 
     def mousePressEvent(self, event: QMouseEvent):
-        """Handle cell toggling and drag start."""
+        """
+        Handle cell toggling and drag start.
+        
+        Left button: Toggle cell state
+        Right button: Start grid panning
+        """
         if event.button() == Qt.LeftButton:
             coords = self._get_cell_coords(event.pos())
             if coords:
@@ -78,7 +104,12 @@ class GridCanvas(QWidget):
             self.last_mouse_pos = event.pos()
 
     def mouseMoveEvent(self, event: QMouseEvent):
-        """Handle panning of the view when dragging and enables drawing between lines."""
+        """
+        Handle panning of the view when dragging and enables drawing between cells.
+        
+        Right button: Pan the grid view
+        Left button: Draw continuous line of live cells
+        """
         if event.buttons() & Qt.RightButton and self.last_mouse_pos:
             delta = event.pos() - self.last_mouse_pos
             self.offset -= delta
@@ -96,13 +127,14 @@ class GridCanvas(QWidget):
             self.update()
 
     def mouseReleaseEvent(self, event):
-        """Reset drag state on release."""
+        """Reset drag state on mouse button release."""
         self.last_mouse_pos = None
 
     def wheelEvent(self, event: QWheelEvent):
-        """Zoom in or out using mouse wheel."""
-
-        # returns 120 for one scroll up tick
+        """
+        Handle zoom in/out using mouse wheel.
+        Maintains the point under cursor during zoom.
+        """
         delta = event.angleDelta().y()
         if delta == 0:
             return
@@ -141,7 +173,7 @@ class GridCanvas(QWidget):
         return int(x), int(y)
 
     def _draw_line_between_points(self, x1, y1, x2, y2):
-        """Draw a continuous line of live cells between two points (Bresenham's algorithm)."""
+        """Draw a continuous line of live cells between two points using Bresenham's algorithm."""
         dx = abs(x2 - x1)
         dy = abs(y2 - y1)
         sx = 1 if x1 < x2 else -1

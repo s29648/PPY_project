@@ -128,15 +128,22 @@ class GameOfLifeGUI(QWidget):
 
 
     def next_generation(self):
-        """Update the game state by one generation."""
-        self.game.next_generation()
+        """
+        Update the game state by one generation.
+        Uses custom rules if they are set, otherwise uses standard Game of Life rules.
+        """
+        if hasattr(self.game, 'custom_overpopulation_limit'):
+            # If custom rules are set
+            self.game.next_generation_custom()
+        else:
+            # Use standard rules
+            self.game.next_generation()
         self.header.generation_label.setText(f"Generation: {self.game.generation}")
         self.canvas.update()
 
 
     def confirm_exit_to_menu(self):
-        """Show confirmation dialog to return to the game menu."""
-
+        """Shows confirmation dialog to return to the game menu."""
         msg = QMessageBox(self)
         msg.setStyleSheet("QLabel{font-size: 20px;} QPushButton{font-size: 16px;}")
         msg.setWindowTitle("Confirm Exit")
@@ -159,17 +166,16 @@ class GameOfLifeGUI(QWidget):
         else:
             self.current_theme = "dark"
             self.apply_dark_theme()
-        # to ensure an immediate redraw
         self.canvas.update()
 
 
     def apply_dark_theme(self):
         """Apply dark theme colors and QSS."""
-        with open("gui/styles/dark_theme.qss", "r") as f: self.setStyleSheet(f.read())
+        with open("gui/styles/dark_theme.qss", "r") as f:
+            self.setStyleSheet(f.read())
         self.controls.theme_btn.setText("Light Mode")
         self.bg_color, self.grid_line_color = QColor("#2d3133"), QColor("#3c3c3c")
         self.dead_color, self.live_color = QColor("#2c2c2c"), QColor("#458557")
-        # Update canvas colors
         self.canvas.colors = {
             'bg': self.bg_color,
             'grid': self.grid_line_color,
@@ -185,7 +191,6 @@ class GameOfLifeGUI(QWidget):
         self.controls.theme_btn.setText("Dark Mode")
         self.bg_color, self.grid_line_color = QColor("#d8e4f0"), QColor("#a7adb5")
         self.dead_color, self.live_color = QColor("#bec7d1"), QColor("#224061")
-        # Update canvas colors
         self.canvas.colors = {
             'bg': self.bg_color,
             'grid': self.grid_line_color,

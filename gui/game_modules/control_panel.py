@@ -3,49 +3,80 @@ from PyQt5.QtWidgets import QWidget, QHBoxLayout, QPushButton, QVBoxLayout, QSli
 
 
 class ControlPanel(QWidget):
-    """Control panel with simulation controls and speed slider."""
+    """
+    Control panel for game controls:
+    - Start/Pause button
+    - Next generation button
+    - Clear grid button
+    - Theme toggle button
+    - Speed control slider with labels
+    """
     def __init__(self, start_callback, next_callback, clear_callback, theme_callback, speed_change_callback, initial_speed=5):
+        """
+        Initialize the control panel.
+        
+        Args:
+            start_callback: Function to call when start/pause button is clicked
+            next_callback: Function to call when next generation button is clicked
+            clear_callback: Function to call when clear button is clicked
+            theme_callback: Function to call when theme button is clicked
+            speed_change_callback: Function to call when speed slider value changes
+            initial_speed: Initial simulation speed (generations per second)
+        """
         super().__init__()
+        self.start_callback = start_callback
+        self.next_callback = next_callback
+        self.clear_callback = clear_callback
+        self.theme_callback = theme_callback
+        self.speed_change_callback = speed_change_callback
+        self.initial_speed = initial_speed
+        self.build_ui()
 
+    def build_ui(self):
+        """Build and arrange control panel UI elements with proper spacing and layout."""
         controls = QHBoxLayout()
         controls.setSpacing(20)
 
-        # theme button
-        self.theme_btn = QPushButton()
-        self.theme_btn.clicked.connect(theme_callback)
+        # Theme button on the left
+        self.theme_btn = QPushButton("Light Mode")
+        self.theme_btn.clicked.connect(self.theme_callback)
         controls.addWidget(self.theme_btn)
         controls.addStretch()
 
-        # clear button
+        # Clear button
         clear_btn = QPushButton("Clear")
-        clear_btn.clicked.connect(clear_callback)
+        clear_btn.clicked.connect(self.clear_callback)
         controls.addWidget(clear_btn)
 
-        # start button
+        # Start button
         self.start_btn = QPushButton("Start")
-        self.start_btn.clicked.connect(start_callback)
+        self.start_btn.clicked.connect(self.start_callback)
         controls.addWidget(self.start_btn)
 
-        # next button
+        # Next button
         next_btn = QPushButton("Next")
-        next_btn.clicked.connect(next_callback)
+        next_btn.clicked.connect(self.next_callback)
         controls.addWidget(next_btn)
         controls.addStretch()
 
-        # speed slider
+        # Speed control with labels
         self.speed_layout = QVBoxLayout()
+        
         self.speed_slider = QSlider(Qt.Horizontal)
         self.speed_slider.setFixedSize(QSize(200, 10))
         self.speed_slider.setRange(1, 20)
-        self.speed_slider.setValue(initial_speed)
+        self.speed_slider.setValue(self.initial_speed)
         self.speed_slider.setTickInterval(1)
         self.speed_slider.setTickPosition(QSlider.TicksBelow)
-        self.speed_slider.valueChanged.connect(speed_change_callback)
-        self.speed_label = QLabel(f"Speed: {initial_speed}x")
+        self.speed_slider.valueChanged.connect(self.speed_change_callback)
+        
+        self.speed_label = QLabel(f"Speed: {self.initial_speed}x")
         self.speed_label.setAlignment(Qt.AlignCenter)
+        
         self.speed_layout.addWidget(self.speed_label)
         self.speed_layout.addWidget(self.speed_slider)
-        self.speed_value_label = QLabel(f"{initial_speed}x")
+        
+        # Update speed label when slider value changes
         self.speed_slider.valueChanged.connect(
             lambda: self.speed_label.setText(f"Speed: {self.speed_slider.value()}x")
         )
