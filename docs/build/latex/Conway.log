@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.21)  22 MAY 2025 23:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.21)  28 MAY 2025 00:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -939,7 +939,7 @@ Package hyperref Info: Link coloring ON on input line 76.
 \@outlinefile=\write5
 \openout5 = `Conway.out'.
 
-<game-of-life.png, id=28, 602.25pt x 602.25pt>
+<game-of-life.png, id=68, 602.25pt x 602.25pt>
 LaTeX Font Info:    Trying to load font information for T1+txtt on input line 8
 4.
 
@@ -981,169 +981,242 @@ nc} <./game-of-life.png>] (Conway.toc)
 
  [2]
 LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <10> not available
-(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 127.
+(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 130.
 LaTeX Font Info:    Trying to load font information for TS1+qtm on input line 1
-38.
+41.
 
 (C:\Users\sheha_mgcb38b\AppData\Local\Programs\MiKTeX\tex/latex/tex-gyre\ts1qtm
 .fd
 File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
 )
 LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <10> not available
-(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 140.
+(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 143.
  [3
 
 {C:/Users/sheha_mgcb38b/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/tex-gyre/
-q-ts1.enc}] [4] [5] [6
+q-ts1.enc}] [4] [5] [6] [7] [8
 
 
 ] (Conway.ind
-Underfull \hbox (badness 10000) in paragraph at lines 10--12
-[]\T1/txtt/m/n/10 _apply_light_theme()
+Overfull \hbox (23.30222pt too wide) in paragraph at lines 9--11
+[]\T1/txtt/m/n/10 _count_neighbors() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.infin
+ite_game.InfiniteGameOfLife
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--12
-\T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.GameOfLifeGUI method\T1/qtm/m/n/10
- ),
+Underfull \hbox (badness 10000) in paragraph at lines 11--13
+[]\T1/txtt/m/n/10 _draw_line_between_points()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 13--14
-[]\T1/txtt/m/n/10 _change_speed() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.
-GameOfLifeGUI
+Underfull \hbox (badness 10000) in paragraph at lines 11--13
+\T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_modules.grid_canvas.GridCanvas
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
-[]\T1/txtt/m/n/10 _clear_grid() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.Ga
-meOfLifeGUI
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--17
-[]\T1/txtt/m/n/10 _confirm_exit_to_menu()
+Overfull \hbox (47.12224pt too wide) in paragraph at lines 13--15
+[]\T1/txtt/m/n/10 _get_cell_coords() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_m
+odules.grid_canvas.GridCanvas
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 15--17
-\T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.GameOfLifeGUI method\T1/qtm/m/n/10
- ),
+[]\T1/txtt/m/n/10 _get_cells_to_check()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--17
+\T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.infinite_game.InfiniteGameOfLife
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 17--19
-[]\T1/txtt/m/n/10 _get_cell_coords() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_g
-ui.GameOfLifeGUI
+[]\T1/txtt/m/n/10 _start_timer_with_current_speed()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--20
-[]\T1/txtt/m/n/10 _mouse_drag() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.Ga
-meOfLifeGUI
+Underfull \hbox (badness 10000) in paragraph at lines 17--19
+\T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.GameOfLifeGUI method\T1/qtm/m/n/10
+ ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--21
-[]\T1/txtt/m/n/10 _mouse_press() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.G
-ameOfLifeGUI
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
-[]\T1/txtt/m/n/10 _mouse_release() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui
-.GameOfLifeGUI
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 22--23
-[]\T1/txtt/m/n/10 _mouse_wheel() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.G
-ameOfLifeGUI
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
-[]\T1/txtt/m/n/10 _next_generation() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_g
-ui.GameOfLifeGUI
+Overfull \hbox (12.80225pt too wide) in paragraph at lines 19--21
+[]\T1/txtt/m/n/10 _update_bounds() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.infinit
+e_game.InfiniteGameOfLife
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 24--25
-[]\T1/txtt/m/n/10 _paint_grid() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.Ga
-meOfLifeGUI
+[]\T1/txtt/m/n/10 apply_dark_theme() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_g
+ui.GameOfLifeGUI
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
-[]\T1/txtt/m/n/10 _toggle_theme() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.
-GameOfLifeGUI
+Overfull \hbox (16.80235pt too wide) in paragraph at lines 31--33
+[]\T1/txtt/m/n/10 build_ui() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_modules.c
+ontrol_panel.ControlPanel
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--27
-[]\T1/txtt/m/n/10 _toggle_timer() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.
-GameOfLifeGUI
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+[]\T1/txtt/m/n/10 change_speed() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.G
+ameOfLifeGUI
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--35
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
+[]\T1/txtt/m/n/10 clear() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.infinite_game.In
+finiteGameOfLife
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--44
+[]\T1/txtt/m/n/10 confirm_exit_to_menu()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--44
+\T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.GameOfLifeGUI method\T1/qtm/m/n/10
+ ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+[]\T1/txtt/m/n/10 ControlPanel \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--51
 []\T1/txtt/m/n/10 count_alive_neighbors()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--35
+Underfull \hbox (badness 10000) in paragraph at lines 49--51
 \T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.game_of_life.GameOfLife method\T1/qtm/m/n/
 10 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
 []\T1/txtt/m/n/10 get_generation() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.game_of
 _life.GameOfLife
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--57
+Overfull \hbox (36.62227pt too wide) in paragraph at lines 91--93
+[]\T1/txtt/m/n/10 mouseMoveEvent() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_mod
+ules.grid_canvas.GridCanvas
+ []
+
+
+Overfull \hbox (41.87225pt too wide) in paragraph at lines 93--95
+[]\T1/txtt/m/n/10 mousePressEvent() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_mo
+dules.grid_canvas.GridCanvas
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--97
+[]\T1/txtt/m/n/10 mouseReleaseEvent()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--97
+\T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_modules.grid_canvas.GridCanvas
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--102
 []\T1/txtt/m/n/10 next_generation() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.game_o
 f_life.GameOfLife
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--59
+Overfull \hbox (18.05223pt too wide) in paragraph at lines 102--104
+[]\T1/txtt/m/n/10 next_generation() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.infini
+te_game.InfiniteGameOfLife
+ []
+
+[9
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+[]\T1/txtt/m/n/10 next_generation() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gu
+i.GameOfLifeGUI
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--107
 []\T1/txtt/m/n/10 next_generation_custom()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--59
+Underfull \hbox (badness 10000) in paragraph at lines 105--107
 \T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.game_of_life.GameOfLife method\T1/qtm/m/n/
 10 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--64
+Overfull \hbox (15.62233pt too wide) in paragraph at lines 110--112
+[]\T1/txtt/m/n/10 paintEvent() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_modules
+.grid_canvas.GridCanvas
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--117
 []\T1/txtt/m/n/10 reset_custom_rules()
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--64
+Underfull \hbox (badness 10000) in paragraph at lines 115--117
 \T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.game_of_life.GameOfLife method\T1/qtm/m/n/
 10 ),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
+Underfull \hbox (badness 10000) in paragraph at lines 120--122
 []\T1/txtt/m/n/10 set_custom_rules() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.game_
 of_life.GameOfLife
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--73
+Overfull \hbox (23.30222pt too wide) in paragraph at lines 122--124
+[]\T1/txtt/m/n/10 set_custom_rules() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.infin
+ite_game.InfiniteGameOfLife
+ []
+
+
+Overfull \hbox (29.94228pt too wide) in paragraph at lines 124--126
+[]\T1/txtt/m/n/10 set_generation() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_mod
+ules.header_bar.HeaderBar
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 []\T1/txtt/m/n/10 toggle_cell() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 core.game_of_li
 fe.GameOfLife
  []
 
-[7
 
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
+[]\T1/txtt/m/n/10 toggle_theme() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.G
+ameOfLifeGUI
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
+[]\T1/txtt/m/n/10 toggle_timer() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_gui.G
+ameOfLifeGUI
+ []
+
+
+Overfull \hbox (15.62233pt too wide) in paragraph at lines 140--142
+[]\T1/txtt/m/n/10 wheelEvent() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 gui.game_modules
+.grid_canvas.GridCanvas
+ []
+
+[10
 
 ]) (Conway.aux)
  ***********
@@ -1151,16 +1224,16 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `Conway.out' has not changed.
-(rerunfilecheck)             Checksum: D053DADDD4D8EBB4B6F729363B12CE3F;634.
+(rerunfilecheck)             Checksum: ED4CB284DEC2164EC631F44CC2E5B65F;2221.
  ) 
 Here is how much of TeX's memory you used:
- 20054 strings out of 474486
- 366110 string characters out of 5739979
+ 20138 strings out of 474486
+ 368364 string characters out of 5739979
  1943542 words of memory out of 5000000
- 41903 multiletter control sequences out of 15000+600000
+ 41951 multiletter control sequences out of 15000+600000
  604550 words of font info for 69 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 72i,11n,82p,1197b,687s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,11n,82p,1197b,828s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/sheha_mgcb38b/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmsy10.pfb><C:/Users/sheha_mgcb38b/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/tex-gyre/qhvb.pfb><C:/Users/sheha_mgcb38b/AppData/Local/Programs/M
@@ -1173,9 +1246,9 @@ yre/qtmri.pfb><C:/Users/sheha_mgcb38b/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/txfonts/t1xbtt.pfb><C:/Users/sheha_mgcb38b/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/txfonts/t1xtt.pfb><C:/Users/sheha_mgcb38b/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/txfonts/t1xtt.pfb>
-Output written on Conway.pdf (7 pages, 197265 bytes).
+Output written on Conway.pdf (10 pages, 222971 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
- 74 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 308 PDF objects out of 1000 (max. 8388607)
+ 77 named destinations out of 1000 (max. 500000)
+ 154 words of extra memory for PDF output out of 10000 (max. 10000000)
 

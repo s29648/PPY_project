@@ -67,7 +67,7 @@
     
 
 \title{Conway's Game of Life Documentation}
-\date{May 22, 2025}
+\date{May 27, 2025}
 \release{1.0}
 \author{Shehab and Darya}
 \newcommand{\sphinxlogo}{\sphinxincludegraphics{game-of-life.png}\par}
@@ -105,10 +105,13 @@ This module initializes and starts the game.
 
 
 \subsection{Core Module}
-\label{\detokenize{core:module-core.game_of_life}}\label{\detokenize{core:core-module}}\label{\detokenize{core::doc}}\index{module@\spxentry{module}!core.game\_of\_life@\spxentry{core.game\_of\_life}}\index{core.game\_of\_life@\spxentry{core.game\_of\_life}!module@\spxentry{module}}
-\sphinxAtStartPar
-Game of Life Logic Module
+\label{\detokenize{core:core-module}}\label{\detokenize{core::doc}}
 
+\subsubsection{Submodules}
+\label{\detokenize{core:submodules}}
+
+\subsubsection{game\_of\_life module}
+\label{\detokenize{core:module-core.game_of_life}}\label{\detokenize{core:game-of-life-module}}\index{module@\spxentry{module}!core.game\_of\_life@\spxentry{core.game\_of\_life}}\index{core.game\_of\_life@\spxentry{core.game\_of\_life}!module@\spxentry{module}}
 \sphinxAtStartPar
 This module defines the core logic for customizable version of Conway’s Game of Life.
 It provides grid state management and rules for updating generations.
@@ -321,21 +324,157 @@ Toggle the alive/dead state of a cell.
 \end{fulllineitems}
 
 
-\sphinxstepscope
 
+\subsubsection{infinite\_game module}
+\label{\detokenize{core:module-core.infinite_game}}\label{\detokenize{core:infinite-game-module}}\index{module@\spxentry{module}!core.infinite\_game@\spxentry{core.infinite\_game}}\index{core.infinite\_game@\spxentry{core.infinite\_game}!module@\spxentry{module}}\index{InfiniteGameOfLife (class in core.infinite\_game)@\spxentry{InfiniteGameOfLife}\spxextra{class in core.infinite\_game}}
 
-\subsection{GUI Module}
-\label{\detokenize{gui:module-gui.game_gui}}\label{\detokenize{gui:gui-module}}\label{\detokenize{gui::doc}}\index{module@\spxentry{module}!gui.game\_gui@\spxentry{gui.game\_gui}}\index{gui.game\_gui@\spxentry{gui.game\_gui}!module@\spxentry{module}}
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{core:core.infinite_game.InfiniteGameOfLife}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{\DUrole{k}{class}\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{core.infinite\_game.}}\sphinxbfcode{\sphinxupquote{InfiniteGameOfLife}}}
+\pysigstopsignatures
 \sphinxAtStartPar
-Game of Life GUI using PyQt5
+Bases: \sphinxcode{\sphinxupquote{object}}
 
 \sphinxAtStartPar
-This module provides a zoomable, pannable, interactive GUI for Conway’s Game of Life,
-based on a GameOfLife class with methods like \sphinxtitleref{toggle\_cell(x, y)}, \sphinxtitleref{next\_generation()}, and \sphinxtitleref{clear()}.
+Implementation of Conway’s Game of Life with infinite grid.
+Uses dictionary to store only live cells, allowing for infinite expansion.
+Coordinates can be any integer (positive or negative).
 
 \sphinxAtStartPar
 Author: Darya Sharnevich
 Version: 1.0
+\index{\_count\_neighbors() (core.infinite\_game.InfiniteGameOfLife method)@\spxentry{\_count\_neighbors()}\spxextra{core.infinite\_game.InfiniteGameOfLife method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{core:core.infinite_game.InfiniteGameOfLife._count_neighbors}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{\_count\_neighbors}}}
+{\sphinxparam{\DUrole{n}{x}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}}\sphinxparamcomma \sphinxparam{\DUrole{n}{y}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}}}
+{{ $\rightarrow$ int}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Count live neighbors for a cell. Returns number of live neighbors
+
+\end{fulllineitems}
+
+\index{\_get\_cells\_to\_check() (core.infinite\_game.InfiniteGameOfLife method)@\spxentry{\_get\_cells\_to\_check()}\spxextra{core.infinite\_game.InfiniteGameOfLife method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{core:core.infinite_game.InfiniteGameOfLife._get_cells_to_check}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{\_get\_cells\_to\_check}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Get set of all cells that need to be checked for the next generation.
+
+\end{fulllineitems}
+
+\index{\_update\_bounds() (core.infinite\_game.InfiniteGameOfLife method)@\spxentry{\_update\_bounds()}\spxextra{core.infinite\_game.InfiniteGameOfLife method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{core:core.infinite_game.InfiniteGameOfLife._update_bounds}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{\_update\_bounds}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Update the bounds of the live cells area.
+
+\end{fulllineitems}
+
+\index{clear() (core.infinite\_game.InfiniteGameOfLife method)@\spxentry{clear()}\spxextra{core.infinite\_game.InfiniteGameOfLife method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{core:core.infinite_game.InfiniteGameOfLife.clear}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{clear}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Clear the grid and reset generation counter.
+
+\end{fulllineitems}
+
+\index{next\_generation() (core.infinite\_game.InfiniteGameOfLife method)@\spxentry{next\_generation()}\spxextra{core.infinite\_game.InfiniteGameOfLife method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{core:core.infinite_game.InfiniteGameOfLife.next_generation}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{next\_generation}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Calculate the next generation of cells.
+
+\end{fulllineitems}
+
+\index{set\_custom\_rules() (core.infinite\_game.InfiniteGameOfLife method)@\spxentry{set\_custom\_rules()}\spxextra{core.infinite\_game.InfiniteGameOfLife method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{core:core.infinite_game.InfiniteGameOfLife.set_custom_rules}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{set\_custom\_rules}}}
+{\sphinxparam{\DUrole{n}{underpop}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}}\sphinxparamcomma \sphinxparam{\DUrole{n}{overpop}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}}\sphinxparamcomma \sphinxparam{\DUrole{n}{repro}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Set custom rules for cell survival and reproduction.
+
+\end{fulllineitems}
+
+\index{toggle\_cell() (core.infinite\_game.InfiniteGameOfLife method)@\spxentry{toggle\_cell()}\spxextra{core.infinite\_game.InfiniteGameOfLife method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{core:core.infinite_game.InfiniteGameOfLife.toggle_cell}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{toggle\_cell}}}
+{\sphinxparam{\DUrole{n}{x}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}}\sphinxparamcomma \sphinxparam{\DUrole{n}{y}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Toggle cell state at given coordinates.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+
+\sphinxstepscope
+
+
+\subsection{GUI Module}
+\label{\detokenize{gui:gui-module}}\label{\detokenize{gui::doc}}
+
+\subsubsection{Main GUI Modules}
+\label{\detokenize{gui:main-gui-modules}}
+
+\subsubsection{game\_gui module}
+\label{\detokenize{gui:game-gui-module}}\index{module@\spxentry{module}!gui.game\_gui@\spxentry{gui.game\_gui}}\index{gui.game\_gui@\spxentry{gui.game\_gui}!module@\spxentry{module}}\phantomsection\label{\detokenize{gui:module-gui.game_gui}}
+\sphinxAtStartPar
+Game of Life GUI using PyQt5
+
+\sphinxAtStartPar
+A zoomable, pannable, interactive GUI for Conway’s Game of Life.
+Integrates both fixed and infinite grid implementations.
+
+\sphinxAtStartPar
+Author: Darya Sharnevich
+Version: 1.1
 \index{GameOfLifeGUI (class in gui.game\_gui)@\spxentry{GameOfLifeGUI}\spxextra{class in gui.game\_gui}}
 
 \begin{fulllineitems}
@@ -343,50 +482,65 @@ Version: 1.0
 \pysigstartsignatures
 \pysiglinewithargsret
 {\sphinxbfcode{\sphinxupquote{\DUrole{k}{class}\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{gui.game\_gui.}}\sphinxbfcode{\sphinxupquote{GameOfLifeGUI}}}
-{\sphinxparam{\DUrole{n}{width}\DUrole{o}{=}\DUrole{default_value}{50}}\sphinxparamcomma \sphinxparam{\DUrole{n}{height}\DUrole{o}{=}\DUrole{default_value}{50}}\sphinxparamcomma \sphinxparam{\DUrole{n}{wrap}\DUrole{o}{=}\DUrole{default_value}{False}}\sphinxparamcomma \sphinxparam{\DUrole{n}{menu\_window}\DUrole{o}{=}\DUrole{default_value}{None}}\sphinxparamcomma \sphinxparam{\DUrole{n}{speed}\DUrole{o}{=}\DUrole{default_value}{10}}\sphinxparamcomma \sphinxparam{\DUrole{n}{fixed\_view}\DUrole{o}{=}\DUrole{default_value}{False}}}
+{\sphinxparam{\DUrole{n}{menu\_window}\DUrole{o}{=}\DUrole{default_value}{None}}\sphinxparamcomma \sphinxparam{\DUrole{n}{speed}\DUrole{o}{=}\DUrole{default_value}{10}}\sphinxparamcomma \sphinxparam{\DUrole{n}{fixed\_view}\DUrole{o}{=}\DUrole{default_value}{False}}\sphinxparamcomma \sphinxparam{\DUrole{n}{width}\DUrole{o}{=}\DUrole{default_value}{None}}\sphinxparamcomma \sphinxparam{\DUrole{n}{height}\DUrole{o}{=}\DUrole{default_value}{None}}\sphinxparamcomma \sphinxparam{\DUrole{n}{wrap}\DUrole{o}{=}\DUrole{default_value}{False}}}
 {}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{QWidget}}
 
 \sphinxAtStartPar
-A PyQt5 widget for displaying and interacting with the Game of Life.
+GUI for the Game of Life.
 \begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{width}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} Width of the grid in cells.
+\sphinxstyleliteralstrong{\sphinxupquote{menu\_window}} (\sphinxstyleliteralemphasis{\sphinxupquote{QWidget}}) \textendash{} Reference to menu window (optional).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{height}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} Height of the grid in cells.
+\sphinxstyleliteralstrong{\sphinxupquote{speed}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} Initial simulation speed (generations / second).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{wrap}} (\sphinxstyleliteralemphasis{\sphinxupquote{bool}}) \textendash{} Enable grid wrapping behavior.
+\sphinxstyleliteralstrong{\sphinxupquote{fixed\_view}} (\sphinxstyleliteralemphasis{\sphinxupquote{bool}}) \textendash{} If True, grid has fixed width and height, panning/zoom is disabled.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{menu\_window}} (\sphinxstyleliteralemphasis{\sphinxupquote{QWidget}}) \textendash{} Optional reference to main menu window.
+\sphinxstyleliteralstrong{\sphinxupquote{width}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} Width of the grid in cells (required for fixed grid mode).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{speed}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} Initial simulation speed (generations per second).
+\sphinxstyleliteralstrong{\sphinxupquote{height}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} Height of the grid in cells (required for fixed grid mode).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{fixed\_view}} (\sphinxstyleliteralemphasis{\sphinxupquote{bool}}) \textendash{} Whether to disable zoom/pan and scale grid to fit.
+\sphinxstyleliteralstrong{\sphinxupquote{wrap}} (\sphinxstyleliteralemphasis{\sphinxupquote{bool}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} Enable grid wrapping (only for fixed grid mode).
 
 \end{itemize}
 
 \end{description}\end{quote}
-\index{\_apply\_dark\_theme() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_apply\_dark\_theme()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
+\index{\_start\_timer\_with\_current\_speed() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_start\_timer\_with\_current\_speed()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._apply_dark_theme}}
+\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._start_timer_with_current_speed}}
 \pysigstartsignatures
 \pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_apply\_dark\_theme}}}
+{\sphinxbfcode{\sphinxupquote{\_start\_timer\_with\_current\_speed}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Start timer with current speed setting.
+
+\end{fulllineitems}
+
+\index{apply\_dark\_theme() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{apply\_dark\_theme()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI.apply_dark_theme}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{apply\_dark\_theme}}}
 {}
 {}
 \pysigstopsignatures
@@ -395,13 +549,13 @@ Apply dark theme colors and QSS.
 
 \end{fulllineitems}
 
-\index{\_apply\_light\_theme() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_apply\_light\_theme()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
+\index{apply\_light\_theme() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{apply\_light\_theme()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._apply_light_theme}}
+\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI.apply_light_theme}}
 \pysigstartsignatures
 \pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_apply\_light\_theme}}}
+{\sphinxbfcode{\sphinxupquote{apply\_light\_theme}}}
 {}
 {}
 \pysigstopsignatures
@@ -410,28 +564,28 @@ Apply light theme colors and QSS.
 
 \end{fulllineitems}
 
-\index{\_build\_ui() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_build\_ui()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
+\index{build\_gui() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{build\_gui()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._build_ui}}
+\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI.build_gui}}
 \pysigstartsignatures
 \pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_build\_ui}}}
+{\sphinxbfcode{\sphinxupquote{build\_gui}}}
 {}
 {}
 \pysigstopsignatures
 \sphinxAtStartPar
-Initialize and arrange UI elements: header, canvas, controls.
+Build header, canvas, and controls layout.
 
 \end{fulllineitems}
 
-\index{\_change\_speed() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_change\_speed()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
+\index{change\_speed() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{change\_speed()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._change_speed}}
+\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI.change_speed}}
 \pysigstartsignatures
 \pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_change\_speed}}}
+{\sphinxbfcode{\sphinxupquote{change\_speed}}}
 {}
 {}
 \pysigstopsignatures
@@ -440,13 +594,13 @@ Adjust simulation speed from slider.
 
 \end{fulllineitems}
 
-\index{\_clear\_grid() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_clear\_grid()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
+\index{clear\_grid() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{clear\_grid()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._clear_grid}}
+\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI.clear_grid}}
 \pysigstartsignatures
 \pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_clear\_grid}}}
+{\sphinxbfcode{\sphinxupquote{clear\_grid}}}
 {}
 {}
 \pysigstopsignatures
@@ -455,148 +609,58 @@ Clear grid and reset generation count.
 
 \end{fulllineitems}
 
-\index{\_confirm\_exit\_to\_menu() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_confirm\_exit\_to\_menu()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
+\index{confirm\_exit\_to\_menu() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{confirm\_exit\_to\_menu()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._confirm_exit_to_menu}}
+\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI.confirm_exit_to_menu}}
 \pysigstartsignatures
 \pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_confirm\_exit\_to\_menu}}}
+{\sphinxbfcode{\sphinxupquote{confirm\_exit\_to\_menu}}}
 {}
 {}
 \pysigstopsignatures
 \sphinxAtStartPar
-Show confirmation dialog to return to main menu.
+Shows confirmation dialog to return to the game\_window menu.
 
 \end{fulllineitems}
 
-\index{\_get\_cell\_coords() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_get\_cell\_coords()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
+\index{next\_generation() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{next\_generation()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._get_cell_coords}}
+\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI.next_generation}}
 \pysigstartsignatures
 \pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_get\_cell\_coords}}}
-{\sphinxparam{\DUrole{n}{pos}}}
-{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Convert screen coordinates to cell grid coordinates.
-
-\end{fulllineitems}
-
-\index{\_mouse\_drag() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_mouse\_drag()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._mouse_drag}}
-\pysigstartsignatures
-\pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_mouse\_drag}}}
-{\sphinxparam{\DUrole{n}{event}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{QMouseEvent}}}
-{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Handle panning of the view during dragging.
-
-\end{fulllineitems}
-
-\index{\_mouse\_press() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_mouse\_press()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._mouse_press}}
-\pysigstartsignatures
-\pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_mouse\_press}}}
-{\sphinxparam{\DUrole{n}{event}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{QMouseEvent}}}
-{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Handle cell toggling and drag start.
-
-\end{fulllineitems}
-
-\index{\_mouse\_release() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_mouse\_release()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._mouse_release}}
-\pysigstartsignatures
-\pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_mouse\_release}}}
-{\sphinxparam{\DUrole{n}{event}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{QMouseEvent}}}
-{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Reset drag state on release.
-
-\end{fulllineitems}
-
-\index{\_mouse\_wheel() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_mouse\_wheel()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._mouse_wheel}}
-\pysigstartsignatures
-\pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_mouse\_wheel}}}
-{\sphinxparam{\DUrole{n}{event}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{QWheelEvent}}}
-{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Zoom in or out using mouse wheel.
-
-\end{fulllineitems}
-
-\index{\_next\_generation() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_next\_generation()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._next_generation}}
-\pysigstartsignatures
-\pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_next\_generation}}}
+{\sphinxbfcode{\sphinxupquote{next\_generation}}}
 {}
 {}
 \pysigstopsignatures
 \sphinxAtStartPar
-Advance the game state by one generation.
+Update the game\_window state by one generation.
 
 \end{fulllineitems}
 
-\index{\_paint\_grid() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_paint\_grid()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
+\index{toggle\_theme() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{toggle\_theme()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._paint_grid}}
+\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI.toggle_theme}}
 \pysigstartsignatures
 \pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_paint\_grid}}}
-{\sphinxparam{\DUrole{n}{event}}}
-{}
-\pysigstopsignatures
-\sphinxAtStartPar
-Paint the grid and live cells based on current state.
-
-\end{fulllineitems}
-
-\index{\_toggle\_theme() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_toggle\_theme()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
-
-\begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._toggle_theme}}
-\pysigstartsignatures
-\pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_toggle\_theme}}}
+{\sphinxbfcode{\sphinxupquote{toggle\_theme}}}
 {}
 {}
 \pysigstopsignatures
 \sphinxAtStartPar
-Switch between light and dark UI themes.
+Switch between light and dark GUI themes.
 
 \end{fulllineitems}
 
-\index{\_toggle\_timer() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{\_toggle\_timer()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
+\index{toggle\_timer() (gui.game\_gui.GameOfLifeGUI method)@\spxentry{toggle\_timer()}\spxextra{gui.game\_gui.GameOfLifeGUI method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI._toggle_timer}}
+\phantomsection\label{\detokenize{gui:gui.game_gui.GameOfLifeGUI.toggle_timer}}
 \pysigstartsignatures
 \pysiglinewithargsret
-{\sphinxbfcode{\sphinxupquote{\_toggle\_timer}}}
+{\sphinxbfcode{\sphinxupquote{toggle\_timer}}}
 {}
 {}
 \pysigstopsignatures
@@ -610,14 +674,358 @@ Start or pause simulation timer.
 
 
 
+\subsubsection{start\_menu module}
+\label{\detokenize{gui:start-menu-module}}\index{module@\spxentry{module}!gui.start\_menu@\spxentry{gui.start\_menu}}\index{gui.start\_menu@\spxentry{gui.start\_menu}!module@\spxentry{module}}\index{MainMenu (class in gui.start\_menu)@\spxentry{MainMenu}\spxextra{class in gui.start\_menu}}\phantomsection\label{\detokenize{gui:module-gui.start_menu}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.start_menu.MainMenu}}
+\pysigstartsignatures
+\pysigline
+{\sphinxbfcode{\sphinxupquote{\DUrole{k}{class}\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{gui.start\_menu.}}\sphinxbfcode{\sphinxupquote{MainMenu}}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Bases: \sphinxcode{\sphinxupquote{QWidget}}
+
+\sphinxAtStartPar
+Main menu window for the Game of Life application.
+
+\sphinxAtStartPar
+Provides options to start the game\_window, open settings, view game\_window info, or exit.
+Also handles game\_window configuration including grid size, wrapping, speed, and custom rules.
+\index{\_build\_ui() (gui.start\_menu.MainMenu method)@\spxentry{\_build\_ui()}\spxextra{gui.start\_menu.MainMenu method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.start_menu.MainMenu._build_ui}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{\_build\_ui}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Build and arrange GUI elements in the main menu.
+
+\end{fulllineitems}
+
+\index{show\_info() (gui.start\_menu.MainMenu method)@\spxentry{show\_info()}\spxextra{gui.start\_menu.MainMenu method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.start_menu.MainMenu.show_info}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{show\_info}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Display information about Conway’s Game of Life.
+
+\end{fulllineitems}
+
+\index{show\_settings() (gui.start\_menu.MainMenu method)@\spxentry{show\_settings()}\spxextra{gui.start\_menu.MainMenu method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.start_menu.MainMenu.show_settings}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{show\_settings}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Display game\_window settings dialog for configuration.
+
+\sphinxAtStartPar
+Allows users to configure:
+\sphinxhyphen{} Grid size (infinite/fixed)
+\sphinxhyphen{} Grid wrapping
+\sphinxhyphen{} Grid dimensions
+\sphinxhyphen{} Game speed
+\sphinxhyphen{} Custom game\_window rules (survival and reproduction conditions)
+
+\end{fulllineitems}
+
+\index{start\_game() (gui.start\_menu.MainMenu method)@\spxentry{start\_game()}\spxextra{gui.start\_menu.MainMenu method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.start_menu.MainMenu.start_game}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{start\_game}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Start the game\_window with the selected settings.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+
+
+\subsubsection{Game Modules Subpackage}
+\label{\detokenize{gui:game-modules-subpackage}}
+
+\subsubsection{control\_panel module}
+\label{\detokenize{gui:module-gui.game_modules.control_panel}}\label{\detokenize{gui:control-panel-module}}\index{module@\spxentry{module}!gui.game\_modules.control\_panel@\spxentry{gui.game\_modules.control\_panel}}\index{gui.game\_modules.control\_panel@\spxentry{gui.game\_modules.control\_panel}!module@\spxentry{module}}\index{ControlPanel (class in gui.game\_modules.control\_panel)@\spxentry{ControlPanel}\spxextra{class in gui.game\_modules.control\_panel}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.control_panel.ControlPanel}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{\DUrole{k}{class}\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{gui.game\_modules.control\_panel.}}\sphinxbfcode{\sphinxupquote{ControlPanel}}}
+{\sphinxparam{\DUrole{n}{start\_callback}}\sphinxparamcomma \sphinxparam{\DUrole{n}{next\_callback}}\sphinxparamcomma \sphinxparam{\DUrole{n}{clear\_callback}}\sphinxparamcomma \sphinxparam{\DUrole{n}{theme\_callback}}\sphinxparamcomma \sphinxparam{\DUrole{n}{speed\_change\_callback}}\sphinxparamcomma \sphinxparam{\DUrole{n}{initial\_speed}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Bases: \sphinxcode{\sphinxupquote{QWidget}}
+
+\sphinxAtStartPar
+Control panel for game\_window controls. Consists of:
+\sphinxhyphen{} Start/Pause button
+\sphinxhyphen{} Next generation button
+\sphinxhyphen{} Clear grid button
+\sphinxhyphen{} Theme toggle button
+\sphinxhyphen{} Speed control slider with labels
+\index{build\_ui() (gui.game\_modules.control\_panel.ControlPanel method)@\spxentry{build\_ui()}\spxextra{gui.game\_modules.control\_panel.ControlPanel method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.control_panel.ControlPanel.build_ui}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{build\_ui}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Build and arrange control panel UI elements with proper spacing and layout.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+
+
+\subsubsection{grid\_canvas module}
+\label{\detokenize{gui:module-gui.game_modules.grid_canvas}}\label{\detokenize{gui:grid-canvas-module}}\index{module@\spxentry{module}!gui.game\_modules.grid\_canvas@\spxentry{gui.game\_modules.grid\_canvas}}\index{gui.game\_modules.grid\_canvas@\spxentry{gui.game\_modules.grid\_canvas}!module@\spxentry{module}}\index{GridCanvas (class in gui.game\_modules.grid\_canvas)@\spxentry{GridCanvas}\spxextra{class in gui.game\_modules.grid\_canvas}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.grid_canvas.GridCanvas}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{\DUrole{k}{class}\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{gui.game\_modules.grid\_canvas.}}\sphinxbfcode{\sphinxupquote{GridCanvas}}}
+{\sphinxparam{\DUrole{n}{game}}\sphinxparamcomma \sphinxparam{\DUrole{n}{fixed\_view\_callable}}\sphinxparamcomma \sphinxparam{\DUrole{n}{zoom}}\sphinxparamcomma \sphinxparam{\DUrole{n}{offset}}\sphinxparamcomma \sphinxparam{\DUrole{n}{colors}}\sphinxparamcomma \sphinxparam{\DUrole{n}{parent}\DUrole{o}{=}\DUrole{default_value}{None}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Bases: \sphinxcode{\sphinxupquote{QWidget}}
+
+\sphinxAtStartPar
+Interactive canvas for displaying and manipulating the Game of Life grid.
+
+\sphinxAtStartPar
+Supports:
+\sphinxhyphen{} Cell toggling with left mouse button
+\sphinxhyphen{} Grid panning with right mouse button
+\sphinxhyphen{} Zoom with mouse wheel
+\sphinxhyphen{} Fixed and infinite grid modes
+\sphinxhyphen{} Custom color schemes
+\index{\_draw\_line\_between\_points() (gui.game\_modules.grid\_canvas.GridCanvas method)@\spxentry{\_draw\_line\_between\_points()}\spxextra{gui.game\_modules.grid\_canvas.GridCanvas method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.grid_canvas.GridCanvas._draw_line_between_points}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{\_draw\_line\_between\_points}}}
+{\sphinxparam{\DUrole{n}{x1}}\sphinxparamcomma \sphinxparam{\DUrole{n}{y1}}\sphinxparamcomma \sphinxparam{\DUrole{n}{x2}}\sphinxparamcomma \sphinxparam{\DUrole{n}{y2}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Draw a continuous line of live cells between two points using Bresenham’s algorithm.
+
+\end{fulllineitems}
+
+\index{\_get\_cell\_coords() (gui.game\_modules.grid\_canvas.GridCanvas method)@\spxentry{\_get\_cell\_coords()}\spxextra{gui.game\_modules.grid\_canvas.GridCanvas method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.grid_canvas.GridCanvas._get_cell_coords}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{\_get\_cell\_coords}}}
+{\sphinxparam{\DUrole{n}{pos}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Convert screen coordinates to cell grid coordinates.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{pos}} \textendash{} QPoint with screen coordinates
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+Tuple (x, y) with grid coordinates or None if outside grid
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{mouseMoveEvent() (gui.game\_modules.grid\_canvas.GridCanvas method)@\spxentry{mouseMoveEvent()}\spxextra{gui.game\_modules.grid\_canvas.GridCanvas method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.grid_canvas.GridCanvas.mouseMoveEvent}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{mouseMoveEvent}}}
+{\sphinxparam{\DUrole{n}{event}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{QMouseEvent}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Handle panning of the view when dragging and enables drawing between cells.
+
+\sphinxAtStartPar
+Right button: Pan the grid view
+Left button: Draw continuous line of live cells
+
+\end{fulllineitems}
+
+\index{mousePressEvent() (gui.game\_modules.grid\_canvas.GridCanvas method)@\spxentry{mousePressEvent()}\spxextra{gui.game\_modules.grid\_canvas.GridCanvas method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.grid_canvas.GridCanvas.mousePressEvent}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{mousePressEvent}}}
+{\sphinxparam{\DUrole{n}{event}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{QMouseEvent}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Handle cell toggling and drag start.
+
+\sphinxAtStartPar
+Left button: Toggle cell state
+Right button: Start grid panning
+
+\end{fulllineitems}
+
+\index{mouseReleaseEvent() (gui.game\_modules.grid\_canvas.GridCanvas method)@\spxentry{mouseReleaseEvent()}\spxextra{gui.game\_modules.grid\_canvas.GridCanvas method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.grid_canvas.GridCanvas.mouseReleaseEvent}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{mouseReleaseEvent}}}
+{\sphinxparam{\DUrole{n}{event}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Reset drag state on mouse button release.
+
+\end{fulllineitems}
+
+\index{paintEvent() (gui.game\_modules.grid\_canvas.GridCanvas method)@\spxentry{paintEvent()}\spxextra{gui.game\_modules.grid\_canvas.GridCanvas method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.grid_canvas.GridCanvas.paintEvent}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{paintEvent}}}
+{\sphinxparam{\DUrole{n}{event}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Paint the grid and live cells based on current state.
+
+\end{fulllineitems}
+
+\index{wheelEvent() (gui.game\_modules.grid\_canvas.GridCanvas method)@\spxentry{wheelEvent()}\spxextra{gui.game\_modules.grid\_canvas.GridCanvas method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.grid_canvas.GridCanvas.wheelEvent}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{wheelEvent}}}
+{\sphinxparam{\DUrole{n}{event}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{QWheelEvent}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Handle zoom in/out using mouse wheel.
+Maintains the center point during zoom.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+
+
+\subsubsection{header\_bar module}
+\label{\detokenize{gui:module-gui.game_modules.header_bar}}\label{\detokenize{gui:header-bar-module}}\index{module@\spxentry{module}!gui.game\_modules.header\_bar@\spxentry{gui.game\_modules.header\_bar}}\index{gui.game\_modules.header\_bar@\spxentry{gui.game\_modules.header\_bar}!module@\spxentry{module}}\index{HeaderBar (class in gui.game\_modules.header\_bar)@\spxentry{HeaderBar}\spxextra{class in gui.game\_modules.header\_bar}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.header_bar.HeaderBar}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{\DUrole{k}{class}\DUrole{w}{ }}}\sphinxcode{\sphinxupquote{gui.game\_modules.header\_bar.}}\sphinxbfcode{\sphinxupquote{HeaderBar}}}
+{\sphinxparam{\DUrole{n}{parent}\DUrole{o}{=}\DUrole{default_value}{None}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Bases: \sphinxcode{\sphinxupquote{QWidget}}
+
+\sphinxAtStartPar
+Header bar widget for displaying game\_window information.
+\index{build\_ui() (gui.game\_modules.header\_bar.HeaderBar method)@\spxentry{build\_ui()}\spxextra{gui.game\_modules.header\_bar.HeaderBar method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.header_bar.HeaderBar.build_ui}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{build\_ui}}}
+{}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Build and arrange header bar GUI elements.
+
+\end{fulllineitems}
+
+\index{set\_generation() (gui.game\_modules.header\_bar.HeaderBar method)@\spxentry{set\_generation()}\spxextra{gui.game\_modules.header\_bar.HeaderBar method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{gui:gui.game_modules.header_bar.HeaderBar.set_generation}}
+\pysigstartsignatures
+\pysiglinewithargsret
+{\sphinxbfcode{\sphinxupquote{set\_generation}}}
+{\sphinxparam{\DUrole{n}{gen\_number}}}
+{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Update the generation counter display.
+
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+
+
 \renewcommand{\indexname}{Python Module Index}
 \begin{sphinxtheindex}
 \let\bigletter\sphinxstyleindexlettergroup
 \bigletter{c}
 \item\relax\sphinxstyleindexentry{core.game\_of\_life}\sphinxstyleindexpageref{core:\detokenize{module-core.game_of_life}}
+\item\relax\sphinxstyleindexentry{core.infinite\_game}\sphinxstyleindexpageref{core:\detokenize{module-core.infinite_game}}
 \indexspace
 \bigletter{g}
 \item\relax\sphinxstyleindexentry{gui.game\_gui}\sphinxstyleindexpageref{gui:\detokenize{module-gui.game_gui}}
+\item\relax\sphinxstyleindexentry{gui.game\_modules.control\_panel}\sphinxstyleindexpageref{gui:\detokenize{module-gui.game_modules.control_panel}}
+\item\relax\sphinxstyleindexentry{gui.game\_modules.grid\_canvas}\sphinxstyleindexpageref{gui:\detokenize{module-gui.game_modules.grid_canvas}}
+\item\relax\sphinxstyleindexentry{gui.game\_modules.header\_bar}\sphinxstyleindexpageref{gui:\detokenize{module-gui.game_modules.header_bar}}
+\item\relax\sphinxstyleindexentry{gui.start\_menu}\sphinxstyleindexpageref{gui:\detokenize{module-gui.start_menu}}
 \indexspace
 \bigletter{m}
 \item\relax\sphinxstyleindexentry{main}\sphinxstyleindexpageref{main:\detokenize{module-main}}
