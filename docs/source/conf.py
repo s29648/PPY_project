@@ -46,4 +46,4 @@ latex_elements = {
     ''',
     'classoptions': ',oneside',  # avoid blank left pages in two-sided layout
 }
-latex_logo = "game-of-life.png"
+latex_logo = "game_window-of-life.png"

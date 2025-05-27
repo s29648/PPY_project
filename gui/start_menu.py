@@ -8,65 +8,70 @@ class MainMenu(QWidget):
     """
     Main menu window for the Game of Life application.
 
-    Provides navigation options to start the game, open settings, view game info, or exit.
-    Also handles game configuration including grid size, wrapping, speed, and custom rules.
+    Provides options to start the game_window, open settings, view game_window info, or exit.
+    Also handles game_window configuration including grid size, wrapping, speed, and custom rules.
     """
     def __init__(self):
         super().__init__()
+
         self.wrap_enabled = False
         self.custom_size = False
-        self.speed = 5
-        self.grid_width = 30
-        self.grid_height = 20
         self.custom_rules_enabled = False
+        self.speed = 10
+
+        self.grid_width = 20
+        self.grid_height = 20
+
         self.overpopulation_limit = 3
         self.underpopulation_limit = 2
         self.reproduction_number = 3
         
         self.setWindowTitle("Menu")
         self.setMinimumSize(600, 400)
-        self.build_ui()
+        self._build_ui()
 
-    def build_ui(self):
+    def _build_ui(self):
         """Build and arrange GUI elements in the main menu."""
-        layout = QVBoxLayout(self)
-        layout.setAlignment(Qt.AlignCenter)
-
         title = QLabel("Conway's Game of Life")
-        title.setObjectName("MainTitle")
-        title.setAlignment(Qt.AlignCenter)
-        layout.addWidget(title)
+        title.setObjectName("MenuTitle")
 
         start_btn = QPushButton("Start New Game")
-        start_btn.clicked.connect(self.start_game)
-        layout.addWidget(start_btn)
-
         settings_btn = QPushButton("Game Settings")
-        settings_btn.clicked.connect(self.show_settings)
-        layout.addWidget(settings_btn)
-
         info_btn = QPushButton("About Game of Life")
-        info_btn.clicked.connect(self.show_info)
-        layout.addWidget(info_btn)
-
         exit_btn = QPushButton("Exit")
+
+        start_btn.clicked.connect(self.start_game)
+        settings_btn.clicked.connect(self.show_settings)
+        info_btn.clicked.connect(self.show_info)
         exit_btn.clicked.connect(self.close)
+
+        layout = QVBoxLayout(self)
+        layout.setAlignment(Qt.AlignCenter)
+        layout.addWidget(title)
+        layout.addWidget(start_btn)
+        layout.addWidget(settings_btn)
+        layout.addWidget(info_btn)
         layout.addWidget(exit_btn)
 
     def start_game(self):
-        """Start the game with the selected settings."""
+        """Start the game_window with the selected settings."""
+        # QWidget has method hide() that hides current window
         self.hide()
-        width = self.grid_width if self.custom_size else 50
-        height = self.grid_height if self.custom_size else 50
 
-        self.game_window = GameOfLifeGUI(
-            width=width,
-            height=height,
-            wrap=self.wrap_enabled,
-            menu_window=self,
-            speed=self.speed,
-            fixed_view=self.custom_size
-        )
+        game_params = {
+            'menu_window': self,
+            'speed': self.speed,
+            'fixed_view': self.custom_size
+        }
+
+        if self.custom_size:
+            game_params.update({
+                'width': self.grid_width,
+                'height': self.grid_height,
+                'wrap': self.wrap_enabled
+            })
+
+        self.game_window = GameOfLifeGUI(**game_params)
 
         if self.custom_rules_enabled:
             self.game_window.game.set_custom_rules(
@@ -81,20 +86,21 @@ class MainMenu(QWidget):
 
     def show_settings(self):
         """
-        Display game settings dialog for configuration.
+        Display game_window settings dialog for configuration.
         
         Allows users to configure:
         - Grid size (infinite/fixed)
         - Grid wrapping
         - Grid dimensions
         - Game speed
-        - Custom game rules (survival and reproduction conditions)
+        - Custom game_window rules (survival and reproduction conditions)
         """
-        from PyQt5.QtWidgets import (QDialog, QFormLayout, QComboBox, QSpinBox, 
-                                   QDialogButtonBox, QGroupBox, QVBoxLayout, QCheckBox)
+        from PyQt5.QtWidgets import (QDialog, QFormLayout, QComboBox, QSpinBox, QDialogButtonBox, QGroupBox,
+                                     QVBoxLayout, QCheckBox)
 
         dialog = QDialog(self)
-        dialog.setWindowTitle("Game Settings")
+        dialog.setWindowTitle("Settings")
+
         main_layout = QVBoxLayout(dialog)
 
         grid_group = QGroupBox("Grid Settings")
@@ -171,10 +177,10 @@ class MainMenu(QWidget):
         toggle_size_inputs(size_box.currentIndex())
 
         buttons = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
-        main_layout.addWidget(buttons)
-
         buttons.accepted.connect(dialog.accept)
         buttons.rejected.connect(dialog.reject)
+
+        main_layout.addWidget(buttons)
 
         if dialog.exec_() == QDialog.Accepted:
             self.wrap_enabled = wrap_box.currentText() == "Enabled"
@@ -191,12 +197,12 @@ class MainMenu(QWidget):
         """Display information about Conway's Game of Life."""
         QMessageBox.information(
             self, "About Game of Life",
-            "Conway's Game of Life is not your typical computer game. It is a cellular automaton where patterns evolve based on initial states.\n\n"
-            "This game became widely known when it was mentioned in an article published by Scientific American in 1970. It consists of a grid of cells which, based on a few mathematical rules, can live, die or multiply. Depending on the initial conditions, the cells form various patterns throughout the course of the game.\n\n"
+            "Conway's Game of Life is not your typical computer game_window. It is a cellular automaton where patterns evolve based on initial states.\n\n"
+            "This game_window became widely known when it was mentioned in an article published by Scientific American in 1970. It consists of a grid of cells which, based on a few mathematical rules, can live, die or multiply. Depending on the initial conditions, the cells form various patterns throughout the course of the game_window.\n\n"
             "Standard Rules:\n\n"
             "1. Each cell with one or no neighbors dies, as if by solitude.\n\n"
             "2. Each cell with four or more neighbors dies, as if by overpopulation.\n\n"
             "3. Each cell with two or three neighbors survives.\n\n"
             "4. Each cell with three neighbors becomes populated.\n\n"
-            "You can also choose your own set of rules in the \"settings\" section.\n\n"
+            "You can also choose your custom set of rules in the \"settings\" section.\n\n"
         )

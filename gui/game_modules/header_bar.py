@@ -5,7 +5,7 @@ from PyQt5.QtSvg import QSvgWidget
 
 
 class HeaderBar(QWidget):
-    """Header bar widget for displaying game information."""
+    """Header bar widget for displaying game_window information."""
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -16,13 +16,11 @@ class HeaderBar(QWidget):
         layout = QHBoxLayout(self)
         layout.setContentsMargins(10, 5, 10, 5)
 
-        # icon
         self.icon_label = QSvgWidget("assets/game-of-life.svg")
         self.icon_label.setObjectName("IconLabel")
         self.icon_label.setFixedSize(100, 100)
         layout.addWidget(self.icon_label)
 
-        # Title text
         self.title_label = QLabel("The Game of Life")
         self.title_label.setObjectName("TitleLabel")
         self.title_label.setAlignment(Qt.AlignCenter)
@@ -35,7 +33,6 @@ class HeaderBar(QWidget):
         self.generation_label.setObjectName("GenerationLabel")
         layout.addWidget(self.generation_label)
 
-        # exit button
         self.exit_btn = QPushButton()
         self.exit_btn.setObjectName("ExitButton")
         self.exit_btn.setIcon(QIcon("assets/exit.svg"))

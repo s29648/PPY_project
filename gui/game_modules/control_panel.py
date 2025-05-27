@@ -4,14 +4,14 @@ from PyQt5.QtWidgets import QWidget, QHBoxLayout, QPushButton, QVBoxLayout, QSli
 
 class ControlPanel(QWidget):
     """
-    Control panel for game controls:
+    Control panel for game_window controls. Consists of:
     - Start/Pause button
     - Next generation button
     - Clear grid button
     - Theme toggle button
     - Speed control slider with labels
     """
-    def __init__(self, start_callback, next_callback, clear_callback, theme_callback, speed_change_callback, initial_speed=5):
+    def __init__(self, start_callback, next_callback, clear_callback, theme_callback, speed_change_callback, initial_speed):
         """
         Initialize the control panel.
         
@@ -37,29 +37,25 @@ class ControlPanel(QWidget):
         controls = QHBoxLayout()
         controls.setSpacing(20)
 
-        # Theme button on the left
         self.theme_btn = QPushButton("Light Mode")
         self.theme_btn.clicked.connect(self.theme_callback)
         controls.addWidget(self.theme_btn)
         controls.addStretch()
 
-        # Clear button
         clear_btn = QPushButton("Clear")
         clear_btn.clicked.connect(self.clear_callback)
         controls.addWidget(clear_btn)
 
-        # Start button
         self.start_btn = QPushButton("Start")
         self.start_btn.clicked.connect(self.start_callback)
         controls.addWidget(self.start_btn)
 
-        # Next button
         next_btn = QPushButton("Next")
         next_btn.clicked.connect(self.next_callback)
         controls.addWidget(next_btn)
         controls.addStretch()
 
-        # Speed control with labels
+        # speed control
         self.speed_layout = QVBoxLayout()
         
         self.speed_slider = QSlider(Qt.Horizontal)
@@ -76,7 +72,6 @@ class ControlPanel(QWidget):
         self.speed_layout.addWidget(self.speed_label)
         self.speed_layout.addWidget(self.speed_slider)
         
-        # Update speed label when slider value changes
         self.speed_slider.valueChanged.connect(
             lambda: self.speed_label.setText(f"Speed: {self.speed_slider.value()}x")
         )
