@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QSizePolicy
 from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtGui import QPainter, QMouseEvent, QWheelEvent, QColor
+from math import floor
 
 class GridCanvas(QWidget):
     """
@@ -39,14 +40,15 @@ class GridCanvas(QWidget):
     def paintEvent(self, event):
         """Paint the grid and live cells based on current state."""
         qp = QPainter(self)
+        qp.setRenderHint(QPainter.Antialiasing)
         qp.fillRect(self.rect(), self.colors['bg'])
 
         width, height = self.width(), self.height()
+        cell_px = max(5, int(self.base_cell_size * self.zoom))
 
         if self.fixed_view_callable():
-            cell_px = min(width // self.game.width, height // self.game.height)
             cols, rows = self.game.width, self.game.height
-
+            cell_px = min(width // cols, height // rows)
             x_offset = (width - cols * cell_px) // 2
             y_offset = (height - rows * cell_px) // 2
 
@@ -59,33 +61,45 @@ class GridCanvas(QWidget):
                     qp.setBrush(self.colors['dead'])
                     qp.drawRect(sx, sy, cell_px, cell_px)
 
-                    if self.game.grid[gy][gx]:
-                        qp.setBrush(self.colors['live'])
-                        qp.setPen(Qt.NoPen)
-                        qp.drawRect(sx + 1, sy + 1, cell_px - 2, cell_px - 2)
-        else:
-            cell_px = max(5, int(self.base_cell_size * self.zoom))
-            start_x = self.offset.x() // cell_px
-            start_y = self.offset.y() // cell_px
-            cols = width // cell_px + 2
-            rows = height // cell_px + 2
-
-            for i in range(cols):
-                for j in range(rows):
-                    gx = start_x + i
-                    gy = start_y + j
-                    sx = i * cell_px - (self.offset.x() % cell_px)
-                    sy = j * cell_px - (self.offset.y() % cell_px)
-
-                    qp.setPen(self.colors['grid'])
-                    qp.setBrush(self.colors['dead'])
-                    qp.drawRect(sx, sy, cell_px, cell_px)
-
-                    if 0 <= gx < self.game.width and 0 <= gy < self.game.height:
+                    if hasattr(self.game, 'grid'):
                         if self.game.grid[gy][gx]:
                             qp.setBrush(self.colors['live'])
                             qp.setPen(Qt.NoPen)
                             qp.drawRect(sx + 1, sy + 1, cell_px - 2, cell_px - 2)
+                    else:
+                        if (gx, gy) in self.game.live_cells:
+                            qp.setBrush(self.colors['live'])
+                            qp.setPen(Qt.NoPen)
+                            qp.drawRect(sx + 1, sy + 1, cell_px - 2, cell_px - 2)
+        else:
+            # infinite grid mode
+            dx = -(self.offset.x() % cell_px)
+            dy = -(self.offset.y() % cell_px)
+            
+            # calculate visible area in grid coordinates
+            start_x = self.offset.x() // cell_px
+            start_y = self.offset.y() // cell_px
+            
+            cols = width // cell_px + 1
+            rows = height // cell_px + 1
+
+            # draw grid
+            for i in range(cols):
+                for j in range(rows):
+                    gx = start_x + i
+                    gy = start_y + j
+                    
+                    sx = i * cell_px + dx
+                    sy = j * cell_px + dy
+
+                    qp.setPen(self.colors['grid'])
+                    qp.setBrush(self.colors['dead'])
+                    qp.drawRect(sx, sy, cell_px + 1, cell_px + 1)
+
+                    if (gx, gy) in self.game.live_cells:
+                        qp.setBrush(self.colors['live'])
+                        qp.setPen(Qt.NoPen)
+                        qp.drawRect(sx + 1, sy + 1, cell_px - 2, cell_px - 2)
 
     def mousePressEvent(self, event: QMouseEvent):
         """
@@ -133,27 +147,55 @@ class GridCanvas(QWidget):
     def wheelEvent(self, event: QWheelEvent):
         """
         Handle zoom in/out using mouse wheel.
-        Maintains the point under cursor during zoom.
+        Maintains the center point during zoom.
         """
+        if self.fixed_view_callable():
+            return  # No zoom in fixed view mode
+            
         delta = event.angleDelta().y()
         if delta == 0:
             return
 
+        old_zoom = self.zoom
         zoom_factor = 1.0 + (delta / 120)
         new_zoom = min(max(0.2, self.zoom * zoom_factor), 5.0)
-        mouse_x, mouse_y = event.pos().x(), event.pos().y()
-        pre_zoom_x = (self.offset.x() + mouse_x) / self.zoom
-        pre_zoom_y = (self.offset.y() + mouse_y) / self.zoom
-
+        
+        # get the center of the viewport
+        center_x = self.width() / 2
+        center_y = self.height() / 2
+        
+        # convert center point to grid coordinates
+        cell_px = max(5, int(self.base_cell_size * old_zoom))
+        grid_x = (center_x + self.offset.x()) / cell_px
+        grid_y = (center_y + self.offset.y()) / cell_px
+        
+        # update zoom
         self.zoom = new_zoom
-        self.offset.setX(int(pre_zoom_x * self.zoom - mouse_x))
-        self.offset.setY(int(pre_zoom_y * self.zoom - mouse_y))
-
+        
+        # convert grid coordinates back to screen
+        cell_px = max(5, int(self.base_cell_size * new_zoom))
+        new_screen_x = grid_x * cell_px - center_x
+        new_screen_y = grid_y * cell_px - center_y
+        
+        # update offset, ensuring integer values
+        self.offset = QPoint(int(round(new_screen_x)), int(round(new_screen_y)))
         self.update()
 
     def _get_cell_coords(self, pos):
-        """Convert screen coordinates to cell grid coordinates."""
+        """
+        Convert screen coordinates to cell grid coordinates.
+        
+        Args:
+            pos: QPoint with screen coordinates
+            
+        Returns:
+            Tuple (x, y) with grid coordinates or None if outside grid
+        """
+        if not pos:
+            return None
+            
         width, height = self.width(), self.height()
+        cell_px = max(5, int(self.base_cell_size * self.zoom))
 
         if self.fixed_view_callable():
             cell_px = min(width // self.game.width, height // self.game.height)
@@ -163,14 +205,19 @@ class GridCanvas(QWidget):
             x = (pos.x() - x_offset) // cell_px
             y = (pos.y() - y_offset) // cell_px
 
-            if not (0 <= x < self.game.width and 0 <= y < self.game.height):
-                return None
+            if hasattr(self.game, 'grid'):
+                if not (0 <= x < self.game.width and 0 <= y < self.game.height):
+                    return None
         else:
-            cell_px = max(5, int(self.base_cell_size * self.zoom))
-            x = (pos.x() + self.offset.x()) // cell_px
-            y = (pos.y() + self.offset.y()) // cell_px
+            # Прямой расчет координат сетки
+            x = (pos.x() + self.offset.x()) / cell_px
+            y = (pos.y() + self.offset.y()) / cell_px
+            
+            # used floor for right cell calculation
+            x = int(floor(x))
+            y = int(floor(y))
 
-        return int(x), int(y)
+        return x, y
 
     def _draw_line_between_points(self, x1, y1, x2, y2):
         """Draw a continuous line of live cells between two points using Bresenham's algorithm."""
@@ -181,10 +228,19 @@ class GridCanvas(QWidget):
         err = dx - dy
 
         while True:
-            if 0 <= x1 < self.game.width and 0 <= y1 < self.game.height:
-                self.game.grid[y1][x1] = 1
+            if self.fixed_view_callable():
+                if 0 <= x1 < self.game.width and 0 <= y1 < self.game.height:
+                    if hasattr(self.game, 'grid'):
+                        self.game.grid[y1][x1] = 1
+                    else:
+                        self.game.live_cells[(x1, y1)] = 1
+            else:
+                # no boundaries check in infinite mode
+                self.game.live_cells[(x1, y1)] = 1
+                
             if x1 == x2 and y1 == y2:
                 break
+                
             e2 = 2 * err
             if e2 > -dy:
                 err -= dy
