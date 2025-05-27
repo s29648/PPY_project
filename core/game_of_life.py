@@ -1,5 +1,4 @@
 """
-Game of Life Logic Module
 
 This module defines the core logic for customizable version of Conway's Game of Life.
 It provides grid state management and rules for updating generations.

@@ -1,11 +1,11 @@
 # Fdb version 4
-["makeindex Conway.idx"] 1747949655.9278 "Conway.idx" "Conway.ind" "Conway" 1747949659.86935 0
-  "Conway.idx" 1747949659 4453 79859cc788200769c7df5a5e0d81982f "pdflatex"
+["makeindex Conway.idx"] 1748383274.15383 "Conway.idx" "Conway.ind" "Conway" 1748383279.36159 0
+  "Conway.idx" 1748383278 9184 d957f7dd4f24ac4e2af7b5e53619aa05 "pdflatex"
   (generated)
   "Conway.ilg"
   "Conway.ind"
   (rewritten before read)
-["pdflatex"] 1747949658.0315 "Conway.tex" "Conway.pdf" "Conway" 1747949659.86984 0
+["pdflatex"] 1748383276.93773 "Conway.tex" "Conway.pdf" "Conway" 1748383279.36234 0
   "C:/Users/sheha_mgcb38b/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1747783098 124174 87bf7f4f9adb97982b9138c69a80372e ""
   "C:/Users/sheha_mgcb38b/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1747782526 24228822 8465fbbf3468bb73ea57d3194ca9e168 ""
   "C:/Users/sheha_mgcb38b/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/tex-gyre/q-ec.enc" 1525740614 2457 aaabbccba4df2a7f7371410ee4e075a3 ""
@@ -150,14 +150,14 @@
   "C:/Users/sheha_mgcb38b/AppData/Local/Programs/MiKTeX/tex/latex/varwidth/varwidth.sty" 1238469540 10894 d359a13923460b2a73d4312d613554c8 ""
   "C:/Users/sheha_mgcb38b/AppData/Local/Programs/MiKTeX/tex/latex/wrapfig/wrapfig.sty" 1044403200 26220 3701aebf80ccdef248c0c20dd062fea9 ""
   "C:/Users/sheha_mgcb38b/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "Conway.aux" 1747949659 3957 e39b67e2a664b05a58659ad34941bbc1 "pdflatex"
-  "Conway.ind" 1747949656 3340 1980f745e647b39f5f1902c9d82391e4 "makeindex Conway.idx"
-  "Conway.out" 1747949659 634 d053daddd4d8ebb4b6f729363b12ce3f "pdflatex"
-  "Conway.tex" 1747949653 22446 3dee69440cd3ff1c632f27f2d69fa96d ""
-  "Conway.toc" 1747949659 433 67b863b9ba3725544ed4dc724c78ffa6 "pdflatex"
+  "Conway.aux" 1748383278 9004 168b4f72b65e964138d88223e53070eb "pdflatex"
+  "Conway.ind" 1748383274 6550 c916076ac1f7442d08cfbc70a155289d "makeindex Conway.idx"
+  "Conway.out" 1748383278 2221 ed4cb284dec2164ec631f44cc2e5b65f "pdflatex"
+  "Conway.tex" 1748383271 39880 6b8d0e738bcbbd64de2cac0506bd3345 ""
+  "Conway.toc" 1748383278 1164 e1153f03bd804ff13dc9705a61d73a2c "pdflatex"
   "game-of-life.png" 1747948330 5157 66247d0935427878ab63f3cbf888f85a ""
   "sphinx.sty" 1747778405 54203 ee7fe875437470f5328ee20661bb9f1d ""
-  "sphinxhighlight.sty" 1747949653 7683 83fb52292c17957d9f4aadcb28c57a87 ""
+  "sphinxhighlight.sty" 1748383271 7683 83fb52292c17957d9f4aadcb28c57a87 ""
   "sphinxhowto.cls" 1747778405 3256 55d5772de2f18cad818d98a3e6e8e37b ""
   "sphinxlatexadmonitions.sty" 1747778405 19111 5e67a0f91439018bceb7cadf319345e6 ""
   "sphinxlatexcontainers.sty" 1747778405 900 d61f923db071a7b54d3cee8a1e6935d3 ""
@@ -172,7 +172,7 @@
   "sphinxlatexstylepage.sty" 1747778405 2671 e63daf3b9f0f8a387a8b4ba09c515982 ""
   "sphinxlatexstyletext.sty" 1747778405 6759 9e932c65374cfb62686485d331bc975c ""
   "sphinxlatextables.sty" 1747778405 57643 7f1013c2fa11942370d867527bdda568 ""
-  "sphinxmessages.sty" 1747949653 765 3f5fcd6cdd7964ed608767954a8ced6f ""
+  "sphinxmessages.sty" 1748383271 765 3f5fcd6cdd7964ed608767954a8ced6f ""
   "sphinxoptionsgeometry.sty" 1747778405 2060 6c27b3eba37bde592ae8908ab2c1ac0f ""
   "sphinxoptionshyperref.sty" 1747778405 1093 e468489bae7631a7f387b4b0f7bc15d4 ""
   "sphinxpackageboxes.sty" 1747778405 36106 1be2053eb1cb9b083b3a75e3657bcb24 ""
