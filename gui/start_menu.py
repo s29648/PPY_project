@@ -1,23 +1,23 @@
-from PyQt5.QtWidgets import (
-    QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QMessageBox
-)
-from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QLabel, QPushButton, QMessageBox)
+from PyQt5.QtCore import Qt
+
+from gui.game_gui import GameOfLifeGUI
 
 
 class MainMenu(QWidget):
     """
-       Main menu window for the Game of Life application.
+    Main menu window for the Game of Life application.
 
-       Provides navigation options to start the game, open settings, view game info, or exit.
-       """
+    Provides navigation options to start the game, open settings, view game info, or exit.
+    """
     def __init__(self):
         super().__init__()
         self.wrap_enabled = False
         self.custom_size = False
         self.speed = 5
-        self.grid_width = 50
-        self.grid_height = 50
-        self.setWindowTitle("Game of Life - Main Menu")
+        self.grid_width = 30
+        self.grid_height = 20
+        self.setWindowTitle("Menu")
         self.setMinimumSize(600, 400)
         self.build_ui()
 
@@ -49,10 +49,10 @@ class MainMenu(QWidget):
 
     def start_game(self):
         """Start the game with the selected settings."""
-        from gui.game_gui import GameOfLifeGUI
         self.hide()
         width = self.grid_width if self.custom_size else 50
         height = self.grid_height if self.custom_size else 50
+
         self.game_window = GameOfLifeGUI(
             width=width,
             height=height,
@@ -61,8 +61,9 @@ class MainMenu(QWidget):
             speed=self.speed,
             fixed_view=self.custom_size
         )
-        with open("gui/styles/main.qss", "r") as f:
-            self.setStyleSheet(f.read())
+
+        with open("gui/styles/dark_theme.qss", "r") as f:
+            self.game_window.setStyleSheet(f.read())
         self.game_window.show()
 
     def show_settings(self):
@@ -74,7 +75,7 @@ class MainMenu(QWidget):
         layout = QFormLayout(dialog)
 
         size_box = QComboBox()
-        size_box.addItems(["Infinite (default)", "Custom size"])
+        size_box.addItems(["Infinite", "Fixed size"])
         layout.addRow("Grid Size:", size_box)
 
         wrap_box = QComboBox()
@@ -93,7 +94,7 @@ class MainMenu(QWidget):
 
         def toggle_size_inputs(index):
             """Enable or disable inputs based on grid size selection."""
-            custom = size_box.currentText() == "Custom size"
+            custom = size_box.currentText() == "Fixed size"
             width_box.setEnabled(custom)
             height_box.setEnabled(custom)
             wrap_box.setEnabled(custom)
@@ -114,7 +115,7 @@ class MainMenu(QWidget):
 
         if dialog.exec_() == QDialog.Accepted:
             self.wrap_enabled = wrap_box.currentText() == "Enabled"
-            self.custom_size = size_box.currentText() == "Custom size"
+            self.custom_size = size_box.currentText() == "Fixed size"
             self.grid_width = width_box.value()
             self.grid_height = height_box.value()
             self.speed = speed_box.value()
@@ -131,13 +132,3 @@ class MainMenu(QWidget):
             "3. Each cell with two or three neighbors survives.\n\n"
             "4. Each cell with three neighbors becomes populated.\n\n"
         )
-
-
-if __name__ == "__main__":
-    import sys
-    app = QApplication(sys.argv)
-    window = MainMenu()
-    with open("gui/styles/menu.qss", "r") as f:
-        app.setStyleSheet(f.read())
-    window.show()
-    sys.exit(app.exec_())
