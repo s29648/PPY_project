@@ -15,6 +15,8 @@ A graphical and interactive simulation of **Conway’s Game of Life**, developed
 ## Features
 
 - 🎨 Graphical User Interface (GUI)
+- 🔺 Infinite grid support
+- 🪡 Custom rules available
 - 🧩 Add cells **during runtime**
 - 🐢 Adjustable simulation speed (delay between generations)
 - 🌍 Enable/disable **grid wrapping** (toroidal field)
