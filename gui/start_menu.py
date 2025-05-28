@@ -100,59 +100,61 @@ class MainMenu(QWidget):
 
         dialog = QDialog(self)
         dialog.setWindowTitle("Settings")
-
         main_layout = QVBoxLayout(dialog)
 
+        # container for grouping related widgets together
         grid_group = QGroupBox("Grid Settings")
-        layout = QFormLayout(grid_group)
+        # grid_settings_layout manager used to arrange widgets in a two-column form style
+        grid_layout = QFormLayout(grid_group)
+        grid_layout.setFormAlignment(Qt.AlignLeft)
 
         size_box = QComboBox()
         size_box.addItems(["Infinite", "Fixed size"])
         size_box.setCurrentText("Fixed size" if self.custom_size else "Infinite")
-        layout.addRow("Grid Size:", size_box)
+        grid_layout.addRow("Grid size:", size_box)
 
         wrap_box = QComboBox()
         wrap_box.addItems(["Disabled", "Enabled"])
         wrap_box.setCurrentText("Enabled" if self.wrap_enabled else "Disabled")
-        layout.addRow("Grid Wrapping:", wrap_box)
+        grid_layout.addRow("Grid wrapping:", wrap_box)
 
         width_box = QSpinBox()
         width_box.setRange(10, 500)
         width_box.setValue(self.grid_width)
-        layout.addRow("Grid Width:", width_box)
+        grid_layout.addRow("Grid width:", width_box)
 
         height_box = QSpinBox()
         height_box.setRange(10, 500)
         height_box.setValue(self.grid_height)
-        layout.addRow("Grid Height:", height_box)
+        grid_layout.addRow("Grid height:", height_box)
 
         speed_box = QSpinBox()
         speed_box.setRange(1, 20)
         speed_box.setValue(self.speed)
-        layout.addRow("Initial Speed (gen/sec):", speed_box)
+        grid_layout.addRow("Initial speed:", speed_box)
 
         main_layout.addWidget(grid_group)
 
-        rules_group = QGroupBox("Game Rules")
+        rules_group = QGroupBox("Game rules")
         rules_layout = QFormLayout(rules_group)
 
-        custom_rules_check = QCheckBox("Enable Custom Rules")
-        custom_rules_check.setChecked(self.custom_rules_enabled)
-        rules_layout.addRow(custom_rules_check)
-
+        custom_rules_check = QCheckBox("Enable custom rules")
         overpop_box = QSpinBox()
-        overpop_box.setRange(1, 8)
-        overpop_box.setValue(self.overpopulation_limit)
-        rules_layout.addRow("Overpopulation Limit:", overpop_box)
-
         underpop_box = QSpinBox()
-        underpop_box.setRange(0, 8)
-        underpop_box.setValue(self.underpopulation_limit)
-        rules_layout.addRow("Underpopulation Limit:", underpop_box)
-
         repro_box = QSpinBox()
+
+        custom_rules_check.setChecked(self.custom_rules_enabled)
+        overpop_box.setRange(1, 8)
+        underpop_box.setRange(0, 8)
         repro_box.setRange(1, 8)
+
+        overpop_box.setValue(self.overpopulation_limit)
+        underpop_box.setValue(self.underpopulation_limit)
         repro_box.setValue(self.reproduction_number)
+
+        rules_layout.addRow(custom_rules_check)
+        rules_layout.addRow("Overpopulation Limit:", overpop_box)
+        rules_layout.addRow("Underpopulation Limit:", underpop_box)
         rules_layout.addRow("Reproduction Number:", repro_box)
 
         def toggle_rules_inputs(checked):
@@ -168,10 +170,9 @@ class MainMenu(QWidget):
 
         def toggle_size_inputs(index):
             """Enable or disable grid size inputs based on selection"""
-            custom = size_box.currentText() == "Fixed size"
-            width_box.setEnabled(custom)
-            height_box.setEnabled(custom)
-            wrap_box.setEnabled(custom)
+            width_box.setEnabled(index)
+            height_box.setEnabled(index)
+            wrap_box.setEnabled(index)
 
         size_box.currentIndexChanged.connect(toggle_size_inputs)
         toggle_size_inputs(size_box.currentIndex())

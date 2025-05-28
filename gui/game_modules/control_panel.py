@@ -62,8 +62,6 @@ class ControlPanel(QWidget):
         self.speed_slider.setFixedSize(QSize(200, 10))
         self.speed_slider.setRange(1, 20)
         self.speed_slider.setValue(self.initial_speed)
-        self.speed_slider.setTickInterval(1)
-        self.speed_slider.setTickPosition(QSlider.TicksBelow)
         self.speed_slider.valueChanged.connect(self.speed_change_callback)
         
         self.speed_label = QLabel(f"Speed: {self.initial_speed}x")

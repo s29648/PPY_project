@@ -7,14 +7,13 @@ from PyQt5.QtSvg import QSvgWidget
 class HeaderBar(QWidget):
     """Header bar widget for displaying game_window information."""
 
-    def __init__(self, parent=None):
-        super().__init__(parent)
+    def __init__(self):
+        super().__init__()
         self.build_ui()
 
     def build_ui(self):
         """Build and arrange header bar GUI elements."""
         layout = QHBoxLayout(self)
-        layout.setContentsMargins(10, 5, 10, 5)
 
         self.icon_label = QSvgWidget("assets/game-of-life.svg")
         self.icon_label.setObjectName("IconLabel")

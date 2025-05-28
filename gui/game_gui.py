@@ -38,16 +38,12 @@ class GameOfLifeGUI(QWidget):
         self.speed = speed
         
         if fixed_view:
-            if width is None or height is None:
-                raise ValueError("Width and height are required for fixed grid mode")
             self.width = width
             self.height = height
             self.wrap = wrap
             self.game = GameOfLife(width, height, wrap)
         else:
             self.game = InfiniteGameOfLife()
-
-        self.current_theme = "dark"
 
         self.setWindowTitle("The Game of Life")
         self.setMinimumSize(800, 800)
@@ -60,6 +56,7 @@ class GameOfLifeGUI(QWidget):
         self.timer = QTimer()
         self.timer.timeout.connect(self.next_generation)
 
+        self.current_theme = "dark"
         self.bg_color = QColor("#2d3133")
         self.grid_line_color = QColor("#3c3c3c")
         self.dead_color = QColor("#2c2c2c")
@@ -117,6 +114,7 @@ class GameOfLifeGUI(QWidget):
 
     def _start_timer_with_current_speed(self):
         """Start timer with current speed setting."""
+        # generations per second
         delay = int(1000 / self.controls.speed_slider.value())
         self.timer.start(delay)
 
