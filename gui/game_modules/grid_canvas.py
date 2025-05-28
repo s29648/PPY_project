@@ -14,7 +14,7 @@ class GridCanvas(QWidget):
     - Fixed and infinite grid modes
     - Custom color schemes
     """
-    def __init__(self, game, fixed_view_callable, zoom, offset, colors, parent=None):
+    def __init__(self, game, fixed_view_callable, zoom, offset, colors):
         """
         Initialize the grid canvas.
 
@@ -24,9 +24,8 @@ class GridCanvas(QWidget):
             zoom: Initial zoom level
             offset: Initial view offset
             colors: Dictionary with color scheme (bg, grid, dead, live)
-            parent: Parent widget
         """
-        super().__init__(parent)
+        super().__init__()
         self.game = game
         self.fixed_view_callable = fixed_view_callable
         self.zoom = zoom
@@ -37,6 +36,7 @@ class GridCanvas(QWidget):
 
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
+    # redefine QWidget paintEvent() to be called when paint event is issued (QWidget.update())
     def paintEvent(self, event):
         """Paint the grid and live cells based on current state."""
         qp = QPainter(self)
@@ -150,7 +150,7 @@ class GridCanvas(QWidget):
         Maintains the center point during zoom.
         """
         if self.fixed_view_callable():
-            return  # No zoom in fixed view mode
+            return
             
         delta = event.angleDelta().y()
         if delta == 0:
@@ -159,8 +159,7 @@ class GridCanvas(QWidget):
         old_zoom = self.zoom
         zoom_factor = 1.0 + (delta / 120)
         new_zoom = min(max(0.2, self.zoom * zoom_factor), 5.0)
-        
-        # get the center of the viewport
+
         center_x = self.width() / 2
         center_y = self.height() / 2
         
@@ -168,8 +167,7 @@ class GridCanvas(QWidget):
         cell_px = max(5, int(self.base_cell_size * old_zoom))
         grid_x = (center_x + self.offset.x()) / cell_px
         grid_y = (center_y + self.offset.y()) / cell_px
-        
-        # update zoom
+
         self.zoom = new_zoom
         
         # convert grid coordinates back to screen
@@ -177,7 +175,6 @@ class GridCanvas(QWidget):
         new_screen_x = grid_x * cell_px - center_x
         new_screen_y = grid_y * cell_px - center_y
         
-        # update offset, ensuring integer values
         self.offset = QPoint(int(round(new_screen_x)), int(round(new_screen_y)))
         self.update()
 
@@ -209,7 +206,6 @@ class GridCanvas(QWidget):
                 if not (0 <= x < self.game.width and 0 <= y < self.game.height):
                     return None
         else:
-            # Прямой расчет координат сетки
             x = (pos.x() + self.offset.x()) / cell_px
             y = (pos.y() + self.offset.y()) / cell_px
             
@@ -230,12 +226,8 @@ class GridCanvas(QWidget):
         while True:
             if self.fixed_view_callable():
                 if 0 <= x1 < self.game.width and 0 <= y1 < self.game.height:
-                    if hasattr(self.game, 'grid'):
-                        self.game.grid[y1][x1] = 1
-                    else:
-                        self.game.live_cells[(x1, y1)] = 1
+                    self.game.grid[y1][x1] = 1
             else:
-                # no boundaries check in infinite mode
                 self.game.live_cells[(x1, y1)] = 1
                 
             if x1 == x2 and y1 == y2:
