@@ -57,49 +57,36 @@ class GridCanvas(QWidget):
                     sx = x_offset + gx * cell_px
                     sy = y_offset + gy * cell_px
 
-                    qp.setPen(self.colors['grid'])
-                    qp.setBrush(self.colors['dead'])
-                    qp.drawRect(sx, sy, cell_px, cell_px)
-
-                    if hasattr(self.game, 'grid'):
-                        if self.game.grid[gy][gx]:
-                            qp.setBrush(self.colors['live'])
-                            qp.setPen(Qt.NoPen)
-                            qp.drawRect(sx + 1, sy + 1, cell_px - 2, cell_px - 2)
+                    if self.game.grid[gy][gx]:
+                        self._draw_live_cell(qp, sx, sy, cell_px)
                     else:
-                        if (gx, gy) in self.game.live_cells:
-                            qp.setBrush(self.colors['live'])
-                            qp.setPen(Qt.NoPen)
-                            qp.drawRect(sx + 1, sy + 1, cell_px - 2, cell_px - 2)
+                        self._draw_dead_cell(qp, sx, sy, cell_px)
         else:
-            # infinite grid mode
             dx = -(self.offset.x() % cell_px)
             dy = -(self.offset.y() % cell_px)
             
-            # calculate visible area in grid coordinates
             start_x = self.offset.x() // cell_px
             start_y = self.offset.y() // cell_px
-            
+
+            # +1 additional cell in addition to all full cells
             cols = width // cell_px + 1
             rows = height // cell_px + 1
 
             # draw grid
             for i in range(cols):
                 for j in range(rows):
+                    # game coords
                     gx = start_x + i
                     gy = start_y + j
-                    
+
+                    # screen coords
                     sx = i * cell_px + dx
                     sy = j * cell_px + dy
 
-                    qp.setPen(self.colors['grid'])
-                    qp.setBrush(self.colors['dead'])
-                    qp.drawRect(sx, sy, cell_px + 1, cell_px + 1)
-
                     if (gx, gy) in self.game.live_cells:
-                        qp.setBrush(self.colors['live'])
-                        qp.setPen(Qt.NoPen)
-                        qp.drawRect(sx + 1, sy + 1, cell_px - 2, cell_px - 2)
+                        self._draw_live_cell(qp, sx, sy, cell_px)
+                    else:
+                        self._draw_dead_cell(qp, sx, sy, cell_px)
 
     def mousePressEvent(self, event: QMouseEvent):
         """
@@ -202,18 +189,27 @@ class GridCanvas(QWidget):
             x = (pos.x() - x_offset) // cell_px
             y = (pos.y() - y_offset) // cell_px
 
-            if hasattr(self.game, 'grid'):
-                if not (0 <= x < self.game.width and 0 <= y < self.game.height):
-                    return None
+            if not (0 <= x < self.game.width and 0 <= y < self.game.height):
+                return None
         else:
-            x = (pos.x() + self.offset.x()) / cell_px
-            y = (pos.y() + self.offset.y()) / cell_px
-            
-            # used floor for right cell calculation
-            x = int(floor(x))
-            y = int(floor(y))
+            x = (pos.x() + self.offset.x()) // cell_px
+            y = (pos.y() + self.offset.y()) // cell_px
 
         return x, y
+
+    def _draw_live_cell(self, qp, x, y, cell_px):
+        """Helper method to draw a single cell."""
+        qp.setBrush(self.colors['live'])
+        # no border
+        qp.setPen(Qt.NoPen)
+        # move by 1px from start, size adjusted
+        qp.drawRect(x + 1, y + 1, cell_px - 2, cell_px - 2)
+
+    def _draw_dead_cell(self, qp, x, y, cell_px):
+        """Helper method to draw a grid for cell."""
+        qp.setPen(self.colors['grid'])
+        qp.setBrush(self.colors['dead'])
+        qp.drawRect(x, y, cell_px, cell_px)
 
     def _draw_line_between_points(self, x1, y1, x2, y2):
         """Draw a continuous line of live cells between two points using Bresenham's algorithm."""
